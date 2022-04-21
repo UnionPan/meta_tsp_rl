@@ -3,12 +3,10 @@ import torch.nn as nn
 
 from collections import OrderedDict
 
-
 def weight_init(module):
     if isinstance(module, nn.Linear):
         nn.init.xavier_uniform_(module.weight)
         module.bias.data.zero_()
-
 
 class Policy(nn.Module):
     def __init__(self, input_size, output_size):

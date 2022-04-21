@@ -1,14 +1,17 @@
 import gym
 
+class make_env(object):
+    def __init__(self, env_name, env_kwargs={}, seed=None):
+        self.env_name = env_name
+        self.env_kwargs = env_kwargs
+        self.seed = seed
 
-def make_env(env_name, env_kwargs={}, seed=None):
-    def _make_env():
-        env = gym.make(env_name, **env_kwargs)
+    def __call__(self):
+        env = gym.make(self.env_name, **self.env_kwargs)
+        #env = gym.wrappers.Monitor(env, "recording", force=True)
         if hasattr(env, 'seed'):
-            env.seed(seed)
+            env.seed(self.seed)
         return env
-    return _make_env
-
 
 class Sampler(object):
     def __init__(self,

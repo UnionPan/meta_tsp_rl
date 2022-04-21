@@ -28,35 +28,42 @@ def _create_consumer(queue, futures, loop=None):
 
 class MultiTaskSampler(Sampler):
     """Vectorized sampler to sample trajectories from multiple environements.
+
     Parameters
     ----------
     env_name : str
         Name of the environment. This environment should be an environment
         registered through `gym`. See `maml.envs`.
+
     env_kwargs : dict
         Additional keywork arguments to be added when creating the environment.
+
     batch_size : int
         Number of trajectories to sample from each task (ie. `fast_batch_size`).
+
     policy : `maml_rl.policies.Policy` instance
         The policy network for sampling. Note that the policy network is an
         instance of `torch.nn.Module` that takes observations as input and
         returns a distribution (typically `Normal` or `Categorical`).
+
     baseline : `maml_rl.baseline.LinearFeatureBaseline` instance
         The baseline. This baseline is an instance of `nn.Module`, with an
         additional `fit` method to fit the parameters of the model.
+
     env : `gym.Env` instance (optional)
         An instance of the environment given by `env_name`. This is used to
         sample tasks from. If not provided, an instance is created from `env_name`.
+
     seed : int (optional)
         Random seed for the different environments. Note that each task and each
         environement inside every process use different random seed derived from
         this value if provided.
+
     num_workers : int
         Number of processes to launch. Note that the number of processes does
         not have to be equal to the number of tasks in a batch (ie. `meta_batch_size`),
         and can scale with the amount of CPUs available instead.
     """
-
     def __init__(self,
                  env_name,
                  env_kwargs,
@@ -93,7 +100,7 @@ class MultiTaskSampler(Sampler):
                                       self.train_episodes_queue,
                                       self.valid_episodes_queue,
                                       policy_lock)
-                        for index in range(num_workers)]
+            for index in range(num_workers)]
 
         for worker in self.workers:
             worker.daemon = True
@@ -131,7 +138,7 @@ class MultiTaskSampler(Sampler):
         async def _wait(train_futures, valid_futures):
             # Gather the train and valid episodes
             train_episodes = await asyncio.gather(*[asyncio.gather(*futures)
-                                                    for futures in train_futures])
+                                                  for futures in train_futures])
             valid_episodes = await asyncio.gather(*valid_futures)
             return (train_episodes, valid_episodes)
 
@@ -161,23 +168,18 @@ class MultiTaskSampler(Sampler):
         train_episodes_futures = [[self._event_loop.create_future() for _ in tasks]
                                   for _ in range(num_steps)]
         self._train_consumer_thread = threading.Thread(target=_create_consumer,
-                                                       args=(
-                                                           self.train_episodes_queue, train_episodes_futures),
-                                                       kwargs={
-                                                           'loop': self._event_loop},
-                                                       name='train-consumer')
+            args=(self.train_episodes_queue, train_episodes_futures),
+            kwargs={'loop': self._event_loop},
+            name='train-consumer')
         self._train_consumer_thread.daemon = True
         self._train_consumer_thread.start()
 
         # Start valid episodes consumer thread
-        valid_episodes_futures = [
-            self._event_loop.create_future() for _ in tasks]
+        valid_episodes_futures = [self._event_loop.create_future() for _ in tasks]
         self._valid_consumer_thread = threading.Thread(target=_create_consumer,
-                                                       args=(
-                                                           self.valid_episodes_queue, valid_episodes_futures),
-                                                       kwargs={
-                                                           'loop': self._event_loop},
-                                                       name='valid-consumer')
+            args=(self.valid_episodes_queue, valid_episodes_futures),
+            kwargs={'loop': self._event_loop},
+            name='valid-consumer')
         self._valid_consumer_thread.daemon = True
         self._valid_consumer_thread.start()
 
@@ -260,14 +262,13 @@ class SamplerWorker(mp.Process):
                                                   device=device)
             train_episodes.log('_enqueueAt', datetime.now(timezone.utc))
             # QKFIX: Deep copy the episodes before sending them to their
-            # respective queues, to avoid a race condition. This issue would
+            # respective queues, to avoid a race condition. This issue would 
             # cause the policy pi = policy(observations) to be miscomputed for
             # some timesteps, which in turns makes the loss explode.
             self.train_queue.put((index, step, deepcopy(train_episodes)))
 
             with self.policy_lock:
-                loss = reinforce_loss(
-                    self.policy, train_episodes, params=params)
+                loss = reinforce_loss(self.policy, train_episodes, params=params)
                 params = self.policy.update_params(loss,
                                                    params=params,
                                                    step_size=fast_lr,

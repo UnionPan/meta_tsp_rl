@@ -4,7 +4,6 @@ import numpy as np
 from torch.distributions import Categorical, Independent, Normal
 from torch.nn.utils.convert_parameters import _check_param_device
 
-
 def weighted_mean(tensor, lengths=None):
     if lengths is None:
         return torch.mean(tensor)
@@ -16,16 +15,17 @@ def weighted_mean(tensor, lengths=None):
         tensor[length:, i].fill_(0.)
 
     extra_dims = (1,) * (tensor.dim() - 2)
-    lengths = torch.as_tensor(lengths, dtype=torch.float32)
+    lengths = torch.as_tensor(lengths, dtype=torch.float32).cuda()
 
     out = torch.sum(tensor, dim=0)
-    out.div_(lengths.view(-1, *extra_dims))
-
+   
+    out.div_(lengths.view(-1, *extra_dims)).cuda()
     return out
 
-
 def weighted_normalize(tensor, lengths=None, epsilon=1e-8):
+    
     mean = weighted_mean(tensor, lengths=lengths)
+    #print(tensor.is_cuda)
     out = tensor - mean.mean()
     for i, length in enumerate(lengths):
         out[length:, i].fill_(0.)
@@ -34,7 +34,6 @@ def weighted_normalize(tensor, lengths=None, epsilon=1e-8):
     out.div_(std + epsilon)
 
     return out
-
 
 def detach_distribution(pi):
     if isinstance(pi, Independent):
@@ -50,7 +49,6 @@ def detach_distribution(pi):
                                   '`{0}`.'.format(type(pi)))
     return distribution
 
-
 def to_numpy(tensor):
     if isinstance(tensor, torch.Tensor):
         return tensor.detach().cpu().numpy()
@@ -60,7 +58,6 @@ def to_numpy(tensor):
         return np.stack([to_numpy(t) for t in tensor], axis=0)
     else:
         raise NotImplementedError()
-
 
 def vector_to_parameters(vector, parameters):
     param_device = None

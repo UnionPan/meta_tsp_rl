@@ -7,7 +7,6 @@ from torch.distributions import Independent, Normal
 from collections import OrderedDict
 from maml_rl.policies.policy import Policy, weight_init
 
-
 class NormalMLPPolicy(Policy):
     """Policy network based on a multi-layer perceptron (MLP), with a 
     `Normal` distribution output, with trainable standard deviation. This 
@@ -15,7 +14,6 @@ class NormalMLPPolicy(Policy):
     `HalfCheetahDir`). The code is adapted from 
     https://github.com/cbfinn/maml_rl/blob/9c8e2ebd741cb0c7b8bf2d040c4caeeb8e06cc95/sandbox/rocky/tf/policies/maml_minimal_gauss_mlp_policy.py
     """
-
     def __init__(self,
                  input_size,
                  output_size,
@@ -34,18 +32,20 @@ class NormalMLPPolicy(Policy):
         for i in range(1, self.num_layers):
             self.add_module('layer{0}'.format(i),
                             nn.Linear(layer_sizes[i - 1], layer_sizes[i]))
-
+        
         self.mu = nn.Linear(layer_sizes[-1], output_size)
         self.sigma = nn.Parameter(torch.Tensor(output_size))
         self.sigma.data.fill_(math.log(init_std))
 
         self.apply(weight_init)
+        self.cuda()
 
     def forward(self, input, params=None):
         if params is None:
             params = OrderedDict(self.named_parameters())
-
-        output = input
+        #print(params['layer1.bias'].is_cuda)
+        output = input.cuda()
+        #print(output.is_cuda)
         for i in range(1, self.num_layers):
             output = F.linear(output,
                               weight=params['layer{0}.weight'.format(i)],
