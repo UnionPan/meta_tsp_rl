@@ -1,0 +1,18 @@
+<additional>
+    <laneAreaDetector id="C000_0" lanes="851965843_0" pos="574.3699999999999" endPos="674.3699999999999" freq="900" file="turnpike.w_detectors.net.test.xml"/>
+    <laneAreaDetector id="C000_1" lanes="851965843_1" pos="574.3699999999999" endPos="674.3699999999999" freq="900" file="turnpike.w_detectors.net.test.xml"/>
+    <laneAreaDetector id="C000_2" lanes="851965843_2" pos="574.3699999999999" endPos="674.3699999999999" freq="900" file="turnpike.w_detectors.net.test.xml"/>
+    <laneAreaDetector id="C000_3" lanes="851965843_3" pos="574.3699999999999" endPos="674.3699999999999" freq="900" file="turnpike.w_detectors.net.test.xml"/>
+    <laneAreaDetector id="C001_0" lanes="225182646_0" pos="653.22" endPos="753.22" freq="900" file="turnpike.w_detectors.net.test.xml"/>
+    <laneAreaDetector id="C001_1" lanes="225182646_1" pos="653.22" endPos="753.22" freq="900" file="turnpike.w_detectors.net.test.xml"/>
+    <laneAreaDetector id="C001_2" lanes="225182646_2" pos="653.22" endPos="753.22" freq="900" file="turnpike.w_detectors.net.test.xml"/>
+    <laneAreaDetector id="C001_3" lanes="225182646_3" pos="653.22" endPos="753.22" freq="900" file="turnpike.w_detectors.net.test.xml"/>
+    <laneAreaDetector id="C002_0" lanes="38913001#0_0 38913001#1.26_1 38913001#1.83_0" pos="229.24" endPos="24.569999999999993" freq="900" file="turnpike.w_detectors.net.test.xml"/>
+    <laneAreaDetector id="C002_1" lanes="38913001#0_1 38913001#1.26_2 38913001#1.83_1" pos="229.24" endPos="24.569999999999993" freq="900" file="turnpike.w_detectors.net.test.xml"/>
+    <laneAreaDetector id="C002_2" lanes="38913001#0_2 38913001#1.26_3 38913001#1.83_2" pos="229.24" endPos="24.569999999999993" freq="900" file="turnpike.w_detectors.net.test.xml"/>
+    <laneAreaDetector id="C002_3" lanes="38913001#0_3 38913001#1.26_4 38913001#1.83_3" pos="229.24" endPos="24.569999999999993" freq="900" file="turnpike.w_detectors.net.test.xml"/>
+    <laneAreaDetector id="R000_0" lanes="38913001#1.83_0" pos="924.57" endPos="1024.5700000000002" freq="900" file="turnpike.w_detectors.net.test.xml"/>
+    <laneAreaDetector id="R000_1" lanes="38913001#1.83_1" pos="924.57" endPos="1024.5700000000002" freq="900" file="turnpike.w_detectors.net.test.xml"/>
+    <laneAreaDetector id="R000_2" lanes="38913001#1.83_2" pos="924.57" endPos="1024.5700000000002" freq="900" file="turnpike.w_detectors.net.test.xml"/>
+    <laneAreaDetector id="R000_3" lanes="38913001#1.83_3" pos="924.57" endPos="1024.5700000000002" freq="900" file="turnpike.w_detectors.net.test.xml"/>
+</additional>

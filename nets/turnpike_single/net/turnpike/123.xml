@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2022-04-18 21:23:48 by Eclipse SUMO netedit Version 1.11.0
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/netconvertConfiguration.xsd">
+
+    <input>
+        <sumo-net-file value="turnpike.net.xml"/>
+    </input>
+
+    <output>
+        <output-file value="turnpike.net.xml"/>
+    </output>
+
+    <processing>
+        <geometry.min-radius.fix.railways value="false"/>
+        <geometry.max-grade.fix value="false"/>
+        <offset.disable-normalization value="true"/>
+        <lefthand value="false"/>
+    </processing>
+
+    <junctions>
+        <no-turnarounds value="true"/>
+        <junctions.corner-detail value="5"/>
+        <junctions.limit-turn-speed value="5.5"/>
+        <rectangular-lane-cut value="false"/>
+    </junctions>
+
+    <pedestrian>
+        <walkingareas value="false"/>
+    </pedestrian>
+
+    <netedit>
+        <additional-files value="D:\Productivity\Coursework\7353\project\net\turnpike\123.xml"/>
+    </netedit>
+
+    <report>
+        <aggregate-warnings value="5"/>
+    </report>
+
+</configuration>
+-->
+
+<additional xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/additional_file.xsd">
+    <e1Detector id="0" lane="968750642_0" pos="107.40" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="1" lane="968750642_1" pos="107.40" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="10" lane="42681075_2" pos="1120.70" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="100" lane="38913001#0_0" pos="53.17" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="101" lane="38913001#0_1" pos="53.17" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="102" lane="38913001#0_2" pos="53.17" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="103" lane="38913001#0_3" pos="53.17" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="104" lane="38913001#1_0" pos="200.00" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="105" lane="38913001#1_1" pos="200.00" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="106" lane="38913001#1_2" pos="200.00" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="107" lane="38913001#1_3" pos="200.00" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="108" lane="38912994_0" pos="97.88" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="109" lane="973551581_0" pos="593.56" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="11" lane="262406834_0" pos="86.35" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="110" lane="973551581_1" pos="593.56" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="111" lane="973551581_2" pos="593.56" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="112" lane="26604431_0" pos="70.71" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="113" lane="26604431_1" pos="70.71" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="114" lane="26604431_2" pos="70.71" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="115" lane="42681042_0" pos="129.16" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="116" lane="42681042_1" pos="129.16" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="117" lane="42681051_0" pos="30.11" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="118" lane="42681051_1" pos="30.11" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="12" lane="262406834_1" pos="86.35" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="122" lane="42681052_0" pos="326.61" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="123" lane="42681054#0_0" pos="232.72" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="124" lane="42681054#0_1" pos="232.72" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="125" lane="42681054#0_2" pos="232.72" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="126" lane="42681054#1_0" pos="200.00" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="127" lane="42681054#1_1" pos="200.00" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="128" lane="42681054#1_2" pos="200.00" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="129" lane="42681335_0" pos="246.03" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="13" lane="262406834_2" pos="86.35" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="130" lane="42681335_1" pos="246.03" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="131" lane="42681319_0" pos="1262.97" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="132" lane="42681319_1" pos="1262.97" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="133" lane="42681319_2" pos="1262.97" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="134" lane="43320062_0" pos="13.34" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="135" lane="43320062_1" pos="13.34" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="136" lane="43320062_2" pos="13.34" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="137" lane="60731684_0" pos="14.90" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="138" lane="582734671_0" pos="72.59" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="139" lane="44580896#1_0" pos="263.66" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="14" lane="1008534891.70_0" pos="622.65" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="140" lane="26378736.44_0" pos="42.17" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="141" lane="26378736.44_1" pos="42.17" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="142" lane="968497066_0" pos="16.16" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="143" lane="968497066_1" pos="16.16" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="144" lane="46694537_0" pos="0.72" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="145" lane="994824361_0" pos="24.94" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="146" lane="994824361_1" pos="24.94" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="147" lane="994824361_2" pos="24.94" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="148" lane="591099508_0" pos="200.00" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="149" lane="591099508_1" pos="200.00" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="15" lane="1008534891.70_1" pos="622.65" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="150" lane="166735762_0" pos="28.15" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="151" lane="166813489_0" pos="147.33" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="152" lane="87079898_0" pos="6.26" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="153" lane="87079898_1" pos="6.26" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="154" lane="38073503_0" pos="7.99" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="155" lane="38073503_1" pos="7.99" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="156" lane="89932025_0" pos="112.31" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="157" lane="89932034#0_0" pos="42.25" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="158" lane="965908322#0.84_0" pos="1292.63" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="159" lane="965908322#0.84_1" pos="1292.63" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="16" lane="1008534891.70_2" pos="622.65" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="160" lane="965908322#0.84_2" pos="1292.63" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="161" lane="42681044_0" pos="272.08" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="162" lane="42681044_1" pos="272.08" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="163" lane="965908322#1_0" pos="117.25" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="164" lane="965908322#1_1" pos="117.25" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="165" lane="965908322#1_2" pos="117.25" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="17" lane="1008534891.70_3" pos="622.65" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="18" lane="26378759_0" pos="81.94" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="19" lane="26966898_0" pos="200.00" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="2" lane="171926106_0" pos="129.51" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="20" lane="26966898_1" pos="200.00" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="21" lane="26966898_2" pos="200.00" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="22" lane="26966898_3" pos="200.00" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="23" lane="23211904.133_0" pos="507.68" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="24" lane="591099508_0" pos="228.22" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="25" lane="591099508_1" pos="228.22" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="26" lane="23211903_0" pos="101.73" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="27" lane="23211903_1" pos="101.73" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="28" lane="11675254#0_0" pos="1562.82" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="29" lane="11675254#0_1" pos="1562.82" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="3" lane="968750645_0" pos="200.00" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="30" lane="11675254#0_2" pos="1562.82" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="31" lane="23211913_0" pos="230.06" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="32" lane="11675254#1_0" pos="200.00" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="33" lane="11675254#1_1" pos="200.00" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="34" lane="11675254#1_2" pos="200.00" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="35" lane="42681314_0" pos="1125.73" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="36" lane="42681314_1" pos="1125.73" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="37" lane="42681314_2" pos="1125.73" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="38" lane="43320072_0" pos="101.01" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="39" lane="122095948_0" pos="200.00" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="4" lane="968750645_1" pos="200.00" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="40" lane="122095948_1" pos="200.00" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="41" lane="122095948_2" pos="200.00" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="42" lane="122095948_3" pos="200.00" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="43" lane="166813489_0" pos="88.47" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="44" lane="484936635_0" pos="141.14" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="45" lane="484936635_1" pos="141.14" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="46" lane="225182561_0" pos="474.29" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="47" lane="42681339_0" pos="812.97" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="48" lane="42681332_0" pos="32.66" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="49" lane="42681332_1" pos="32.66" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="5" lane="968750645_2" pos="200.00" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="50" lane="23211900_0" pos="339.49" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="51" lane="968058053_0" pos="377.23" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="52" lane="968058053_1" pos="377.23" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="53" lane="968750642_0" pos="159.41" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="54" lane="968750642_1" pos="159.41" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="55" lane="26378766_0" pos="233.81" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="56" lane="38913007#0_0" pos="191.80" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="57" lane="38913007#0_1" pos="191.80" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="58" lane="38913007#0_2" pos="191.80" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="59" lane="38913007#1_0" pos="200.00" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="6" lane="999047763_0" pos="482.16" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="60" lane="38913007#1_1" pos="200.00" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="61" lane="38913007#1_2" pos="200.00" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="62" lane="315049411#0_0" pos="201.27" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="63" lane="315049411#0_1" pos="201.27" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="64" lane="315049411#0_2" pos="201.27" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="65" lane="315049430_0" pos="205.22" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="66" lane="315049411#1_0" pos="200.00" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="67" lane="315049411#1_1" pos="200.00" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="68" lane="315049411#1_2" pos="200.00" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="69" lane="23197423.79_0" pos="851.80" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="7" lane="999047763_1" pos="482.16" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="70" lane="23197423.79_1" pos="851.80" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="71" lane="23197423.79_2" pos="851.80" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="72" lane="23197423.79_3" pos="851.80" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="73" lane="89933729.17_0" pos="239.86" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="74" lane="315049428#1_0" pos="200.00" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="75" lane="315049428#1_1" pos="200.00" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="76" lane="315049428#1_2" pos="200.00" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="77" lane="315049428#1_3" pos="200.00" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="78" lane="315049429#0_0" pos="893.13" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="79" lane="315049429#0_1" pos="893.13" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="8" lane="42681075_0" pos="1120.70" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="80" lane="315049429#0_2" pos="893.13" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="81" lane="315049429#0_3" pos="893.13" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="82" lane="89934908.76_0" pos="266.07" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="83" lane="315049429#1_0" pos="200.00" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="84" lane="315049429#1_1" pos="200.00" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="85" lane="315049429#1_2" pos="200.00" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="86" lane="315049429#1_3" pos="200.00" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="87" lane="315049432#0_0" pos="1113.87" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="88" lane="315049432#0_1" pos="1113.87" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="89" lane="315049432#0_2" pos="1113.87" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="9" lane="42681075_1" pos="1120.70" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="90" lane="89935157_0" pos="328.68" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="91" lane="315049432#1_0" pos="200.00" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="92" lane="315049432#1_1" pos="200.00" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="93" lane="315049432#1_2" pos="200.00" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="94" lane="26378746.114_0" pos="295.13" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="95" lane="38912991_0" pos="117.54" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="96" lane="38912989_0" pos="31.62" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="97" lane="967749674_0" pos="12.30" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="98" lane="967749674_1" pos="12.30" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+    <e1Detector id="99" lane="38912992#1_0" pos="183.16" freq="900.00" file="turnpike.w_detectors.net.test.xml"/>
+</additional>

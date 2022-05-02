@@ -1,0 +1,24 @@
+<configuration>
+    <input>
+        <net-file value="turnpike.single.net.xml"/>
+        <route-files value="turnpike.single.rou.xml"/>
+	  <additional-files value="turnpike.single.E1asDetectors.additional.xml, turnpike.single.E2asControlRecoveryPoints.additional.xml"/>
+    </input>
+    <viewsettings>
+        <scheme name="real world"/>
+    </viewsettings>
+
+    <time>
+	<begin value="0"/>
+	<end value="3600"/>
+	<step-length value="0.1"/>
+    </time>
+
+    <output>
+	<fcd-output value="turnpike.run.output.fcd.xml"/>
+	<tripinfo-output value="turnpike.run.tripinfo.fcd.xml"/>
+    </output>
+
+    
+
+</configuration>

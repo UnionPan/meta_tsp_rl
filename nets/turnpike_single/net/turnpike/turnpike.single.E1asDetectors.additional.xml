@@ -1,0 +1,28 @@
+<additional>
+    <inductionLoop id="0" lane="38913001#1.26_0" pos="0" freq="900" file="turnpike.w_detectors.net.test.xml"/>
+    <inductionLoop id="1" lane="38913001#1.26_1" pos="0" freq="900" file="turnpike.w_detectors.net.test.xml"/>
+    <inductionLoop id="2" lane="38913001#1.26_2" pos="0" freq="900" file="turnpike.w_detectors.net.test.xml"/>
+    <inductionLoop id="3" lane="38913001#1.26_3" pos="0" freq="900" file="turnpike.w_detectors.net.test.xml"/>
+    <inductionLoop id="4" lane="38913001#1.26_4" pos="0" freq="900" file="turnpike.w_detectors.net.test.xml"/>
+    <inductionLoop id="5" lane="851965843_0" pos="624.3699999999999" freq="900" file="turnpike.w_detectors.net.test.xml"/>
+    <inductionLoop id="6" lane="851965843_1" pos="624.3699999999999" freq="900" file="turnpike.w_detectors.net.test.xml"/>
+    <inductionLoop id="7" lane="851965843_2" pos="624.3699999999999" freq="900" file="turnpike.w_detectors.net.test.xml"/>
+    <inductionLoop id="8" lane="851965843_3" pos="624.3699999999999" freq="900" file="turnpike.w_detectors.net.test.xml"/>
+    <inductionLoop id="9" lane="851965843_0" pos="624.3699999999999" freq="900" file="turnpike.w_detectors.net.test.xml"/>
+    <inductionLoop id="10" lane="851965843_1" pos="624.3699999999999" freq="900" file="turnpike.w_detectors.net.test.xml"/>
+    <inductionLoop id="11" lane="851965843_2" pos="624.3699999999999" freq="900" file="turnpike.w_detectors.net.test.xml"/>
+    <inductionLoop id="12" lane="851965843_3" pos="624.3699999999999" freq="900" file="turnpike.w_detectors.net.test.xml"/>
+    <inductionLoop id="13" lane="225182646_0" pos="703.22" freq="900" file="turnpike.w_detectors.net.test.xml"/>
+    <inductionLoop id="14" lane="225182646_1" pos="703.22" freq="900" file="turnpike.w_detectors.net.test.xml"/>
+    <inductionLoop id="15" lane="225182646_2" pos="703.22" freq="900" file="turnpike.w_detectors.net.test.xml"/>
+    <inductionLoop id="16" lane="225182646_3" pos="703.22" freq="900" file="turnpike.w_detectors.net.test.xml"/>
+    <inductionLoop id="17" lane="38913001#1.26_0" pos="0" freq="900" file="turnpike.w_detectors.net.test.xml"/>
+    <inductionLoop id="18" lane="38913001#1.26_1" pos="0" freq="900" file="turnpike.w_detectors.net.test.xml"/>
+    <inductionLoop id="19" lane="38913001#1.26_2" pos="0" freq="900" file="turnpike.w_detectors.net.test.xml"/>
+    <inductionLoop id="20" lane="38913001#1.26_3" pos="0" freq="900" file="turnpike.w_detectors.net.test.xml"/>
+    <inductionLoop id="21" lane="38913001#1.26_4" pos="0" freq="900" file="turnpike.w_detectors.net.test.xml"/>
+    <inductionLoop id="22" lane="38913001#1.83_0" pos="974.57" freq="900" file="turnpike.w_detectors.net.test.xml"/>
+    <inductionLoop id="23" lane="38913001#1.83_1" pos="974.57" freq="900" file="turnpike.w_detectors.net.test.xml"/>
+    <inductionLoop id="24" lane="38913001#1.83_2" pos="974.57" freq="900" file="turnpike.w_detectors.net.test.xml"/>
+    <inductionLoop id="25" lane="38913001#1.83_3" pos="974.57" freq="900" file="turnpike.w_detectors.net.test.xml"/>
+</additional>

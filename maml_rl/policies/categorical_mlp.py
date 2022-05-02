@@ -46,3 +46,22 @@ class CategoricalMLPPolicy(Policy):
                           bias=params['layer{0}.bias'.format(self.num_layers)])
 
         return Categorical(logits=logits)
+
+
+class AutoRegressivePolicy(Policy):
+    def __init__(self, 
+                 input_size,
+                 output_size,
+                 ar_layer=(),
+                 hidden_sizes=(),
+                 nonlinearity=F.relu):
+        super(AutoRegressivePolicy, self).__init__(input_size=input_size,
+                                                   output_size=output_size)
+    
+    def forward(self, input, params=None):
+        if params == None:
+            params = OrderedDict(self.named_parameters())
+
+        output = self.nonlinearity(output)
+
+        return Categorical(logits=logits)
