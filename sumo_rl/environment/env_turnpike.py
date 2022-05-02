@@ -63,7 +63,9 @@ class TurnpikeEnvironmnet(gym.Env):
                  sumo_seed: Union[str, int] = 'random',
                  sumo_warnings: bool = True,
                  step_length = 0.5,
+                 mode = 0
                  ):
+        
         self._cfg = cfg_file
         self.use_gui = use_gui 
         if self.use_gui:
@@ -86,7 +88,7 @@ class TurnpikeEnvironmnet(gym.Env):
         self.run = 0
         self.sumo_warnings = False
         self.out_csv_name = 'turnpike.vsl2.0.save'
-        
+        self._mode = mode
         
        
         
@@ -215,13 +217,18 @@ class TurnpikeEnvironmnet(gym.Env):
         # print ('Speed limit updated!')
     
     def _compute_observations(self, metrics):
-        # awaits implementation lucas!!!
+        
         #print(metrics['occupancy'].shape)
         return np.average(metrics['occupancy'], axis=0)/100
 
     def _compute_rewards(self, metrics):
-        return np.average(metrics['flow'])
-        # awaits implementation lucas!!!!!
+        if self._mode == 0:
+            r = np.average(metrics['flow'])
+        else:
+            r = np.average(metrics['time to collision'])
+        return r
+
+        
     
     def _compute_dones(self):
         dones = False
@@ -274,6 +281,9 @@ class TurnpikeEnvironmnet(gym.Env):
     def check_vehicle_maxspeed(self):
         for veh in traci.vehicle.getIDList():
             print (traci.vehicle.getMaxSpeed(veh))
+
+
+
 
 if __name__ == '__main__':
     0

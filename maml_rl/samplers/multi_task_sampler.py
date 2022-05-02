@@ -11,6 +11,7 @@ from maml_rl.samplers.sampler import Sampler, make_env
 from maml_rl.envs.utils.sync_vector_env import SyncVectorEnv
 from maml_rl.episode import BatchEpisodes
 from maml_rl.utils.reinforcement_learning import reinforce_loss
+from maml_rl.envs.turnpike import TurnpikeMeta
 
 
 def _create_consumer(queue, futures, loop=None):

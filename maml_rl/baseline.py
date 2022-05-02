@@ -18,7 +18,7 @@ class LinearFeatureBaseline(nn.Module):
         self._reg_coeff = reg_coeff
 
         self.weight = nn.Parameter(torch.Tensor(self.feature_size,),
-                                   requires_grad=False).cuda()
+                                   requires_grad=False)#.cuda()
         self.weight.data.zero_()
         self._eye = torch.eye(self.feature_size,
                               dtype=torch.float32,

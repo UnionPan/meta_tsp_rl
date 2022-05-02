@@ -11,6 +11,7 @@ from maml_rl.baseline import LinearFeatureBaseline
 from maml_rl.samplers import MultiTaskSampler
 from maml_rl.utils.helpers import get_policy_for_env, get_input_size
 from maml_rl.utils.reinforcement_learning import get_returns
+from maml_rl.envs.turnpike import TurnpikeMeta
 
 
 def main(args):
@@ -31,7 +32,14 @@ def main(args):
         torch.manual_seed(args.seed)
         torch.cuda.manual_seed_all(args.seed)
 
-    env = gym.make(config['env-name'], **config.get('env-kwargs', {}))
+    env = TurnpikeMeta(#cfg_file='nets/turnpike_single/net/turnpike/turnpike.single.sumocfg',
+                       load_file='nets/turnpike_single/net/turnpike/turnpike.single.savedstate.xml',
+                       vsl_files='/nets/turnpike_single/net/turnpike/vsl2.0',
+                       use_gui=0,
+                       num_seconds=3600,
+                       delta_time=60,
+                       single_agent=True
+                       )
     env.close()
 
     # Policy
