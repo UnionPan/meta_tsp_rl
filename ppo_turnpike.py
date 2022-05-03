@@ -9,7 +9,7 @@ import pandas as pd
 from os.path import join as joindir
 import os
 import matplotlib.pyplot as plt
-from sumo_rl.environment.env_turnpike import TurnpikeEnvironmnet
+from maml_rl.envs.turnpike.env_turnpike1 import TurnpikeEnvironment
 import numpy as np
 import traci
 import torch
@@ -17,16 +17,18 @@ import torch.optim as opt
 from torch import Tensor
 from collections import namedtuple
 import matplotlib
+from tqdm import trange
+#from torch.utils.tensorboard import SummaryWriter
 matplotlib.use('agg')
 
 
 Transition = namedtuple('Transition', ('state', 'value',
                                        'action', 'logproba', 'mask', 'next_state', 'reward'))
 
-if not os.path.exists('./result'):
-    os.mkdir('./result')
+if not os.path.exists('./rl/result'):
+    os.mkdir('./rl/result')
 EPS = 1e-10
-RESULT_DIR = joindir('./result', '.'.join(__file__.split('.')[:-1]))
+RESULT_DIR = joindir('./rl/result', '.'.join(__file__.split('.')[:-1]))
 
 class Memory(object):
     "for real just sample the trajectory"
@@ -48,7 +50,7 @@ def add_arguments():
                         help='gym environment to test algorithm')
     parser.add_argument('--seed', type=int, default=64,
                         help='random seed')
-    parser.add_argument('--num_episode', type=int, default=500,
+    parser.add_argument('--num_episode', type=int, default=80,
                         help='total episode of training')
     parser.add_argument('--batch_size', type=int, default=528,
                         help='batch size of transitions per episode')
@@ -97,15 +99,12 @@ def add_arguments():
 class PPO_Turnpike:
     def __init__(self, args):
         self.args = args
-        self.env = TurnpikeEnvironmnet(cfg_file='nets/turnpike_single/net/turnpike/turnpike.single.sumocfg',
-                              load_file='nets/turnpike_single/net/turnpike/turnpike.single.savedstate.xml',
-                              vsl_files='/nets/turnpike_single/net/turnpike/vsl2.0',
-                              use_gui=0,
-                              num_seconds=50,
-                              delta_time=2,
-                              single_agent=True
-                             )
-        _ = self.env.reset()
+        self.env = TurnpikeEnvironment(
+                                      use_gui=0,
+                                      num_seconds=600,
+                                      delta_time=60
+                                      )
+        #_ = self.env.reset()
         #traci.close()
         self.num_inputs = self.env.observation_space.shape[0]
         self.num_actions = self.env.action_space.n
@@ -240,7 +239,7 @@ class PPO_Turnpike:
         
         while num_steps < self.args.batch_size:
             
-            traci.close()
+            #traci.close()
             state = self.env.reset()
             
             if self.args.state_norm:
@@ -265,6 +264,7 @@ class PPO_Turnpike:
                             mask, next_state, reward)
 
                 if done:
+                    print('one trajectory done!')
                     break
                 state = next_state
 
@@ -286,7 +286,7 @@ class PPO_Turnpike:
 
     def ppo_step(self, j_parallel):
         self.global_steps = 0
-        for i_episode in range(self.args.num_episode):
+        for i_episode in trange(self.args.num_episode):
             # collect trajectories using current policy    on-policy training
             memory = self.collect_trajectories(i_episode)
             # collect advantage function and returns

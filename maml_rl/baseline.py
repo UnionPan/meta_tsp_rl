@@ -30,11 +30,11 @@ class LinearFeatureBaseline(nn.Module):
         return 2 * self.input_size + 4
 
     def _feature(self, episodes):
-        ones = episodes.mask.unsqueeze(2).cuda()
+        ones = episodes.mask.unsqueeze(2)#.cuda()
         #print(ones.is_cuda)
-        observations = episodes.observations.cuda()
+        observations = episodes.observations#.cuda()
         #print(observations.is_cuda)
-        time_step = torch.arange(len(episodes)).view(-1, 1, 1).cuda() * ones / len(episodes)
+        time_step = torch.arange(len(episodes)).view(-1, 1, 1) * ones / len(episodes)
         #print(time_step.is_cuda)
         #print((time_step ** 2))
         return torch.cat([

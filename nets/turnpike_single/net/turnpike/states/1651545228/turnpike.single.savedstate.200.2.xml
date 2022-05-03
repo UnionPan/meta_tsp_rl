@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2022-05-01 17:23:31 by Eclipse SUMO sumo Version 1.11.0
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
+
+    <input>
+        <net-file value="D:\Productivity\Coursework\7353\project\net/turnpike/turnpike.single.net.xml"/>
+        <route-files value="D:\Productivity\Coursework\7353\project\net/turnpike/turnpike.single.rou.xml"/>
+        <additional-files value="D:\Productivity\Coursework\7353\project\net/turnpike/turnpike.single.E1asDetectors.additional.xml,D:\Productivity\Coursework\7353\project\net/turnpike/turnpike.single.E2asControlRecoveryPoints.additional.xml"/>
+    </input>
+
+    <output>
+        <fcd-output value="D:\Productivity\Coursework\7353\project\net/turnpike/turnpike.run.output.fcd.xml"/>
+        <tripinfo-output value="D:\Productivity\Coursework\7353\project\net/turnpike/turnpike.run.tripinfo.fcd.xml"/>
+    </output>
+
+    <time>
+        <begin value="0"/>
+        <end value="3600"/>
+        <step-length value="0.2"/>
+    </time>
+
+    <traci_server>
+        <remote-port value="64926"/>
+    </traci_server>
+
+    <gui_only>
+        <tracker-interval value="0.2"/>
+    </gui_only>
+
+</configuration>
+-->
+
+<snapshot xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/state_file.xsd" version="1.11.0" time="290.00" type="micro">
+    <route id="!225182646to38913001#1.83" state="1" edges="225182646 38913001#1.83"/>
+    <route id="!225182646to38913001#1.83.19!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 38913004 38913000 38913001#0 38913001#1.26 38913001#1.83"/>
+    <route id="!225182646to38913001#1.83.21!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 38913004 38913000 38913001#0 38913001#1.26 38913001#1.83"/>
+    <route id="!225182646to38913001#1.83.22!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 38913004 38913000 38913001#0 38913001#1.26 38913001#1.83"/>
+    <route id="!225182646to38913001#1.83.23!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 38913004 38913000 38913001#0 38913001#1.26 38913001#1.83"/>
+    <route id="!225182646to38913001#1.83.24!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 38913004 38913000 38913001#0 38913001#1.26 38913001#1.83"/>
+    <route id="!225182646to38913001#1.83.25!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 38913004 38913000 38913001#0 38913001#1.26 38913001#1.83"/>
+    <route id="!225182646to38913001#1.83.26!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 38913004 38913000 38913001#0 38913001#1.26 38913001#1.83"/>
+    <route id="!225182646to38913001#1.83.27!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 38913004 38913000 38913001#0 38913001#1.26 38913001#1.83"/>
+    <route id="!225182646to38913001#1.83.28!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 38913004 38913000 38913001#0 38913001#1.26 38913001#1.83"/>
+    <route id="!225182646to38913001#1.83.29!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 38913004 38913000 38913001#0 38913001#1.26 38913001#1.83"/>
+    <route id="!225182646to38913001#1.83.30!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 38913004 38913000 38913001#0 38913001#1.26 38913001#1.83"/>
+    <route id="!225182646to38913001#1.83.31!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 38913004 38913000 38913001#0 38913001#1.26 38913001#1.83"/>
+    <route id="!225182646to38913001#1.83.32!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 38913004 38913000 38913001#0 38913001#1.26 38913001#1.83"/>
+    <route id="!225182646to38913001#1.83.33!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 38913004 38913000 38913001#0 38913001#1.26 38913001#1.83"/>
+    <route id="!225182646to38913001#1.83.34!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 38913004 38913000 38913001#0 38913001#1.26 38913001#1.83"/>
+    <route id="!225182646to38913001#1.83.35!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 38913004 38913000 38913001#0 38913001#1.26 38913001#1.83"/>
+    <route id="!225182646to38913001#1.83.36!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 38913004 38913000 38913001#0 38913001#1.26 38913001#1.83"/>
+    <route id="!225182646to38913001#1.83.37!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 38913004 38913000 38913001#0 38913001#1.26 38913001#1.83"/>
+    <route id="!225182646to38913001#1.83.38!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 38913004 38913000 38913001#0 38913001#1.26 38913001#1.83"/>
+    <route id="!225182646to38913001#1.83.39!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 38913004 38913000 38913001#0 38913001#1.26 38913001#1.83"/>
+    <route id="!225182646to38913001#1.83.40!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 38913004 38913000 38913001#0 38913001#1.26 38913001#1.83"/>
+    <route id="!225182646to38913001#1.83.41!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 38913004 38913000 38913001#0 38913001#1.26 38913001#1.83"/>
+    <route id="!225182646to38913001#1.83.42!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 38913004 38913000 38913001#0 38913001#1.26 38913001#1.83"/>
+    <route id="!225182646to38913001#1.83.43!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 38913004 38913000 38913001#0 38913001#1.26 38913001#1.83"/>
+    <route id="!225182646to38913001#1.83.44!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 38913004 38913000 38913001#0 38913001#1.26 38913001#1.83"/>
+    <route id="!225182646to38913001#1.83.45!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 38913004 38913000 38913001#0 38913001#1.26 38913001#1.83"/>
+    <route id="!225182646to38913001#1.83.46!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 38913004 38913000 38913001#0 38913001#1.26 38913001#1.83"/>
+    <route id="!225182646to38913001#1.83.47!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 38913004 38913000 38913001#0 38913001#1.26 38913001#1.83"/>
+    <route id="!225182646to38913001#1.83.48!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 38913004 38913000 38913001#0 38913001#1.26 38913001#1.83"/>
+    <route id="!225182646to38913001#1.83.49!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 38913004 38913000 38913001#0 38913001#1.26 38913001#1.83"/>
+    <route id="!225182646to38913001#1.83.50!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 38913004 38913000 38913001#0 38913001#1.26 38913001#1.83"/>
+    <route id="!225182646to38913001#1.83.51!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 38913004 38913000 38913001#0 38913001#1.26 38913001#1.83"/>
+    <route id="!225182646to38913001#1.83.52!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 38913004 38913000 38913001#0 38913001#1.26 38913001#1.83"/>
+    <route id="!225182646to38913001#1.83.53!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 38913004 38913000 38913001#0 38913001#1.26 38913001#1.83"/>
+    <route id="!225182646to38913001#1.83.54!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 38913004 38913000 38913001#0 38913001#1.26 38913001#1.83"/>
+    <route id="!225182646to38913001#1.83.55!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 38913004 38913000 38913001#0 38913001#1.26 38913001#1.83"/>
+    <route id="!225182646to38913001#1.83.56!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 38913004 38913000 38913001#0 38913001#1.26 38913001#1.83"/>
+    <route id="!225182646to38913001#1.83.57!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 38913004 38913000 38913001#0 38913001#1.26 38913001#1.83"/>
+    <route id="!225182646to38913001#1.83.58!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 38913004 38913000 38913001#0 38913001#1.26 38913001#1.83"/>
+    <route id="!225182646to38913001#1.83.59!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 38913004 38913000 38913001#0 38913001#1.26 38913001#1.83"/>
+    <route id="!225182646to38913001#1.83.60!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 38913004 38913000 38913001#0 38913001#1.26 38913001#1.83"/>
+    <route id="!225182646to38913001#1.83.61!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 38913004 38913000 38913001#0 38913001#1.26 38913001#1.83"/>
+    <route id="!225182646to38913001#1.83.62!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 38913004 38913000 38913001#0 38913001#1.26 38913001#1.83"/>
+    <route id="!225182646to89932034#0" state="1" edges="225182646 89932034#0"/>
+    <route id="!225182646to89932034#0.43!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 89932034#0"/>
+    <route id="!225182646to89932034#0.44!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 89932034#0"/>
+    <route id="!225182646to89932034#0.45!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 89932034#0"/>
+    <route id="!225182646to89932034#0.46!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 89932034#0"/>
+    <route id="!225182646to89932034#0.47!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 89932034#0"/>
+    <route id="!225182646to89932034#0.48!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 89932034#0"/>
+    <route id="!225182646to89932034#0.49!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 89932034#0"/>
+    <route id="!225182646to89932034#0.50!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 89932034#0"/>
+    <route id="!225182646to89932034#0.51!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 89932034#0"/>
+    <route id="!225182646to89932034#0.52!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 89932034#0"/>
+    <route id="!225182646to89932034#0.53!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 89932034#0"/>
+    <route id="!225182646to89932034#0.54!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 89932034#0"/>
+    <route id="!225182646to89932034#0.55!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 89932034#0"/>
+    <route id="!225182646to89932034#0.56!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 89932034#0"/>
+    <route id="!225182646to89932034#0.57!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 89932034#0"/>
+    <route id="!225182646to89932034#0.58!var#1" state="0" edges="225182646 851965844 851965843 968492020 968492019 89932034#0"/>
+    <route id="!38912992#1to38913001#1.83" state="1" edges="38912992#1 38913001#1.83"/>
+    <route id="!38912992#1to38913001#1.83.5!var#1" state="0" edges="38912992#1 38913001#1.26 38913001#1.83"/>
+    <route id="!38912992#1to38913001#1.83.6!var#1" state="0" edges="38912992#1 38913001#1.26 38913001#1.83"/>
+    <route id="!38912992#1to38913001#1.83.7!var#1" state="0" edges="38912992#1 38913001#1.26 38913001#1.83"/>
+    <route id="!38912992#1to38913001#1.83.8!var#1" state="0" edges="38912992#1 38913001#1.26 38913001#1.83"/>
+    <route id="!38912992#1to38913001#1.83.9!var#1" state="0" edges="38912992#1 38913001#1.26 38913001#1.83"/>
+    <flowState id="225182646to38913001#1.83" index="63" reroute="1"/>
+    <flowState id="225182646to89932034#0" index="59" reroute="1"/>
+    <flowState id="38912992#1to38913001#1.83" index="10" reroute="1"/>
+    <delay number="64" begin="132" end="68" depart="29.80" time="8354.00"/>
+    <vType id="DEFAULT_VEHTYPE"/>
+    <vType id="DEFAULT_VEHTYPE@225182646to38913001#1.83.19" maxSpeed="29.06"/>
+    <vType id="DEFAULT_VEHTYPE@225182646to38913001#1.83.21" maxSpeed="29.06"/>
+    <vType id="DEFAULT_VEHTYPE@225182646to38913001#1.83.22" maxSpeed="29.06"/>
+    <vType id="DEFAULT_VEHTYPE@225182646to38913001#1.83.23" maxSpeed="29.06"/>
+    <vType id="DEFAULT_VEHTYPE@225182646to38913001#1.83.24" maxSpeed="29.06"/>
+    <vType id="DEFAULT_VEHTYPE@225182646to38913001#1.83.25" maxSpeed="29.06"/>
+    <vType id="DEFAULT_VEHTYPE@225182646to38913001#1.83.26" maxSpeed="29.06"/>
+    <vType id="DEFAULT_VEHTYPE@225182646to38913001#1.83.27" maxSpeed="29.06"/>
+    <vType id="DEFAULT_VEHTYPE@225182646to38913001#1.83.28" maxSpeed="29.06"/>
+    <vType id="DEFAULT_VEHTYPE@225182646to38913001#1.83.29" maxSpeed="29.06"/>
+    <vType id="DEFAULT_VEHTYPE@225182646to38913001#1.83.30" maxSpeed="29.06"/>
+    <vType id="DEFAULT_VEHTYPE@225182646to38913001#1.83.31" maxSpeed="29.06"/>
+    <vType id="DEFAULT_VEHTYPE@225182646to38913001#1.83.32" maxSpeed="29.06"/>
+    <vType id="DEFAULT_VEHTYPE@225182646to38913001#1.83.33" maxSpeed="29.06"/>
+    <vType id="DEFAULT_VEHTYPE@225182646to38913001#1.83.34" maxSpeed="29.06"/>
+    <vType id="DEFAULT_VEHTYPE@225182646to38913001#1.83.35" maxSpeed="29.06"/>
+    <vType id="DEFAULT_VEHTYPE@225182646to38913001#1.83.36" maxSpeed="29.06"/>
+    <vType id="DEFAULT_VEHTYPE@225182646to38913001#1.83.37" maxSpeed="29.06"/>
+    <vType id="DEFAULT_VEHTYPE@225182646to38913001#1.83.38" maxSpeed="29.06"/>
+    <vType id="DEFAULT_VEHTYPE@225182646to38913001#1.83.39" maxSpeed="29.06"/>
+    <vType id="DEFAULT_VEHTYPE@225182646to38913001#1.83.40" maxSpeed="29.06"/>
+    <vType id="DEFAULT_VEHTYPE@225182646to38913001#1.83.41" maxSpeed="29.06"/>
+    <vType id="DEFAULT_VEHTYPE@225182646to38913001#1.83.42" maxSpeed="29.06"/>
+    <vType id="DEFAULT_VEHTYPE@225182646to38913001#1.83.43" maxSpeed="29.06"/>
+    <vType id="DEFAULT_VEHTYPE@225182646to38913001#1.83.44" maxSpeed="39.44"/>
+    <vType id="DEFAULT_VEHTYPE@225182646to38913001#1.83.45" maxSpeed="29.06"/>
+    <vType id="DEFAULT_VEHTYPE@225182646to38913001#1.83.46" maxSpeed="39.44"/>
+    <vType id="DEFAULT_VEHTYPE@225182646to38913001#1.83.47" maxSpeed="39.44"/>
+    <vType id="DEFAULT_VEHTYPE@225182646to38913001#1.83.48" maxSpeed="39.44"/>
+    <vType id="DEFAULT_VEHTYPE@225182646to38913001#1.83.49" maxSpeed="39.44"/>
+    <vType id="DEFAULT_VEHTYPE@225182646to38913001#1.83.50" maxSpeed="39.44"/>
+    <vType id="DEFAULT_VEHTYPE@225182646to38913001#1.83.51" maxSpeed="39.44"/>
+    <vType id="DEFAULT_VEHTYPE@225182646to38913001#1.83.52" maxSpeed="39.44"/>
+    <vType id="DEFAULT_VEHTYPE@225182646to38913001#1.83.53" maxSpeed="39.44"/>
+    <vType id="DEFAULT_VEHTYPE@225182646to38913001#1.83.54" maxSpeed="39.44"/>
+    <vType id="DEFAULT_VEHTYPE@225182646to38913001#1.83.55" maxSpeed="39.44"/>
+    <vType id="DEFAULT_VEHTYPE@225182646to38913001#1.83.56" maxSpeed="39.44"/>
+    <vType id="DEFAULT_VEHTYPE@225182646to38913001#1.83.57" maxSpeed="39.44"/>
+    <vType id="DEFAULT_VEHTYPE@225182646to89932034#0.43" maxSpeed="39.44"/>
+    <vType id="DEFAULT_VEHTYPE@225182646to89932034#0.44" maxSpeed="39.44"/>
+    <vType id="DEFAULT_VEHTYPE@225182646to89932034#0.45" maxSpeed="39.44"/>
+    <vType id="DEFAULT_VEHTYPE@225182646to89932034#0.46" maxSpeed="39.44"/>
+    <vType id="DEFAULT_VEHTYPE@225182646to89932034#0.47" maxSpeed="39.44"/>
+    <vType id="DEFAULT_VEHTYPE@225182646to89932034#0.48" maxSpeed="39.44"/>
+    <vType id="DEFAULT_VEHTYPE@225182646to89932034#0.49" maxSpeed="39.44"/>
+    <vType id="DEFAULT_VEHTYPE@225182646to89932034#0.50" maxSpeed="39.44"/>
+    <vType id="DEFAULT_VEHTYPE@225182646to89932034#0.51" maxSpeed="39.44"/>
+    <vType id="DEFAULT_VEHTYPE@225182646to89932034#0.52" maxSpeed="39.44"/>
+    <vType id="DEFAULT_VEHTYPE@225182646to89932034#0.53" maxSpeed="39.44"/>
+    <vType id="DEFAULT_VEHTYPE@38912992#1to38913001#1.83.5" maxSpeed="29.06"/>
+    <vType id="DEFAULT_VEHTYPE@38912992#1to38913001#1.83.6" maxSpeed="29.06"/>
+    <vType id="DEFAULT_VEHTYPE@38912992#1to38913001#1.83.7" maxSpeed="29.06"/>
+    <vType id="DEFAULT_VEHTYPE@38912992#1to38913001#1.83.8" maxSpeed="29.06"/>
+    <vType id="DEFAULT_VEHTYPE@38912992#1to38913001#1.83.9" maxSpeed="29.06"/>
+    <vehicle id="225182646to38913001#1.83.19" type="DEFAULT_VEHTYPE@225182646to38913001#1.83.19" depart="87.44" departLane="random" arrivalLane="random" route="!225182646to38913001#1.83.19!var#1" distance="2768.77 1" speedFactor="0.96" reroute="1" state="133188 87600 9 5.10 0 10.37 289800 0 0" pos="3214.32 3209.32 5.53" speed="27.65 27.76" angle="215.23" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to38913001#1.83.19" state="225182646_3 0 0 2763.67 0 0 0 0 -1"/>
+        <device id="routing_225182646to38913001#1.83.19" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to38913001#1.83.21" type="DEFAULT_VEHTYPE@225182646to38913001#1.83.21" depart="96.64" departLane="random" arrivalLane="random" route="!225182646to38913001#1.83.21!var#1" distance="2768.77 1" speedFactor="1.09" reroute="1" state="133188 96800 9 5.10 0 11.34 289800 0 0" pos="3215.36 3210.36 5.77" speed="28.87 28.98" angle="215.23" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to38913001#1.83.21" state="225182646_0 0 0 2763.67 0 0 0 0 -1"/>
+        <device id="routing_225182646to38913001#1.83.21" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to38913001#1.83.22" type="DEFAULT_VEHTYPE@225182646to38913001#1.83.22" depart="101.24" departLane="random" arrivalLane="random" route="!225182646to38913001#1.83.22!var#1" distance="2768.77 1" speedFactor="0.90" reroute="1" state="133188 101400 9 5.10 0 9.96 289800 0 0" pos="2547.92 2542.92 5.22" speed="26.11 26.09" angle="215.19" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to38913001#1.83.22" state="225182646_2 0 0 2763.67 0 0 0 0 -1"/>
+        <device id="routing_225182646to38913001#1.83.22" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to38913001#1.83.23" type="DEFAULT_VEHTYPE@225182646to38913001#1.83.23" depart="105.85" departLane="random" arrivalLane="random" route="!225182646to38913001#1.83.23!var#1" distance="2768.77 1" speedFactor="0.85" reroute="1" state="133188 106200 9 5.10 0 9.05 289800 0 0" pos="2191.17 2186.17 4.93" speed="24.64 24.51" angle="213.85" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to38913001#1.83.23" state="225182646_2 0 0 2763.67 0 0 0 0 -1"/>
+        <device id="routing_225182646to38913001#1.83.23" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to38913001#1.83.24" type="DEFAULT_VEHTYPE@225182646to38913001#1.83.24" depart="110.45" departLane="random" arrivalLane="random" route="!225182646to38913001#1.83.24!var#1" distance="2768.77 1" speedFactor="1.17" reroute="1" state="133188 110600 9 5.10 0 14.25 289800 0 0" pos="2774.41 2769.41 5.77" speed="28.84 28.85" angle="215.19" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to38913001#1.83.24" state="225182646_0 0 0 2763.67 0 0 0 0 -1"/>
+        <device id="routing_225182646to38913001#1.83.24" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to38913001#1.83.25" type="DEFAULT_VEHTYPE@225182646to38913001#1.83.25" depart="115.05" departLane="random" arrivalLane="random" route="!225182646to38913001#1.83.25!var#1" distance="2768.77 1" speedFactor="1.10" reroute="1" state="133188 115200 9 5.10 0 11.52 289800 0 0" pos="2679.05 2674.05 5.81" speed="29.04 28.99" angle="215.19" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to38913001#1.83.25" state="225182646_1 0 0 2763.67 0 0 0 0 -1"/>
+        <device id="routing_225182646to38913001#1.83.25" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to38913001#1.83.26" type="DEFAULT_VEHTYPE@225182646to38913001#1.83.26" depart="119.65" departLane="random" arrivalLane="random" route="!225182646to38913001#1.83.26!var#1" distance="2768.77 1" speedFactor="0.90" reroute="1" state="133188 119800 9 5.10 0 9.20 289800 0 0" pos="2078.92 2073.92 5.21" speed="26.05 26.06" angle="212.81" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to38913001#1.83.26" state="225182646_1 0 0 2763.67 0 0 0 0 -1"/>
+        <device id="routing_225182646to38913001#1.83.26" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to38913001#1.83.27" type="DEFAULT_VEHTYPE@225182646to38913001#1.83.27" depart="124.25" departLane="random" arrivalLane="random" route="!225182646to38913001#1.83.27!var#1" distance="2768.77 1" speedFactor="1.02" reroute="1" state="133188 124400 9 5.10 0 11.37 289800 0 0" pos="2371.04 2366.04 5.79" speed="28.93 28.81" angle="214.93" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to38913001#1.83.27" state="225182646_2 0 0 2763.67 0 0 0 0 -1"/>
+        <device id="routing_225182646to38913001#1.83.27" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to38913001#1.83.28" type="DEFAULT_VEHTYPE@225182646to38913001#1.83.28" depart="128.86" departLane="random" arrivalLane="random" route="!225182646to38913001#1.83.28!var#1" distance="2768.77 1" speedFactor="0.97" reroute="1" state="133188 129000 9 5.10 0 10.98 289800 0 0" pos="2098.81 2093.81 5.62" speed="28.09 28.07" angle="212.80" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to38913001#1.83.28" state="225182646_0 0 0 2763.67 0 0 0 0 -1"/>
+        <device id="routing_225182646to38913001#1.83.28" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to38913001#1.83.29" type="DEFAULT_VEHTYPE@225182646to38913001#1.83.29" depart="133.46" departLane="random" arrivalLane="random" route="!225182646to38913001#1.83.29!var#1" distance="2768.77 1" speedFactor="1.12" reroute="1" state="133188 133600 9 5.10 0 11.87 289800 0 0" pos="2149.11 2144.11 5.17" speed="25.87 26.00" angle="212.81" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to38913001#1.83.29" state="225182646_0 0 0 2763.67 0 0 0 0 -1"/>
+        <device id="routing_225182646to38913001#1.83.29" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to38913001#1.83.30" type="DEFAULT_VEHTYPE@225182646to38913001#1.83.30" depart="138.06" departLane="random" arrivalLane="random" route="!225182646to38913001#1.83.30!var#1" distance="2768.77 1" speedFactor="0.99" reroute="1" state="133188 138200 9 5.10 0 10.81 289800 0 0" pos="1916.21 1911.21 5.71" speed="28.56 28.50" angle="210.87" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to38913001#1.83.30" state="225182646_0 0 0 2763.67 0 0 0 0 -1"/>
+        <device id="routing_225182646to38913001#1.83.30" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to38913001#1.83.31" type="DEFAULT_VEHTYPE@225182646to38913001#1.83.31" depart="142.66" departLane="random" arrivalLane="random" route="!225182646to38913001#1.83.31!var#1" distance="2768.77 1" speedFactor="0.88" reroute="1" state="133188 142800 9 5.10 0 9.22 289800 0 0" pos="1411.30 1406.30 5.12" speed="25.62 25.51" angle="206.12" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to38913001#1.83.31" state="225182646_3 0 0 2763.67 0 0 0 0 -1"/>
+        <device id="routing_225182646to38913001#1.83.31" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to38913001#1.83.32" type="DEFAULT_VEHTYPE@225182646to38913001#1.83.32" depart="147.26" departLane="random" arrivalLane="random" route="!225182646to38913001#1.83.32!var#1" distance="2768.77 1" speedFactor="1.04" reroute="1" state="133188 147400 9 5.10 0 10.66 289800 0 0" pos="1734.44 1729.44 5.79" speed="28.93 29.06" angle="208.93" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to38913001#1.83.32" state="225182646_0 0 0 2763.67 0 0 0 0 -1"/>
+        <device id="routing_225182646to38913001#1.83.32" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to38913001#1.83.33" type="DEFAULT_VEHTYPE@225182646to38913001#1.83.33" depart="151.87" departLane="random" arrivalLane="random" route="!225182646to38913001#1.83.33!var#1" distance="2768.77 1" speedFactor="1.02" reroute="1" state="133188 152000 9 5.10 0 10.88 289800 0 0" pos="1582.10 1577.10 5.78" speed="28.92 28.95" angle="207.88" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to38913001#1.83.33" state="225182646_1 0 0 2763.67 0 0 0 0 -1"/>
+        <device id="routing_225182646to38913001#1.83.33" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to38913001#1.83.34" type="DEFAULT_VEHTYPE@225182646to38913001#1.83.34" depart="156.47" departLane="random" arrivalLane="random" route="!225182646to38913001#1.83.34!var#1" distance="2768.77 1" speedFactor="0.94" reroute="1" state="133188 156600 9 5.10 0 10.02 289800 0 0" pos="1243.99 1238.99 5.44" speed="27.21 27.23" angle="205.95" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to38913001#1.83.34" state="225182646_2 0 0 2763.67 0 0 0 0 -1"/>
+        <device id="routing_225182646to38913001#1.83.34" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to38913001#1.83.35" type="DEFAULT_VEHTYPE@225182646to38913001#1.83.35" depart="161.07" departLane="random" arrivalLane="random" route="!225182646to38913001#1.83.35!var#1" distance="2768.77 1" speedFactor="0.96" reroute="1" state="133188 161200 9 5.10 0 10.05 289800 0 0" pos="1169.29 1164.29 5.53" speed="27.67 27.60" angle="205.95" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to38913001#1.83.35" state="225182646_2 0 0 2763.67 0 0 0 0 -1"/>
+        <device id="routing_225182646to38913001#1.83.35" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to38913001#1.83.36" type="DEFAULT_VEHTYPE@225182646to38913001#1.83.36" depart="165.67" departLane="random" arrivalLane="random" route="!225182646to38913001#1.83.36!var#1" distance="2768.77 1" speedFactor="1.03" reroute="1" state="133188 166000 9 5.10 0 10.97 289800 0 0" pos="1179.05 1174.05 5.79" speed="28.95 28.93" angle="205.95" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to38913001#1.83.36" state="225182646_1 0 0 2763.67 0 0 0 0 -1"/>
+        <device id="routing_225182646to38913001#1.83.36" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to38913001#1.83.37" type="DEFAULT_VEHTYPE@225182646to38913001#1.83.37" depart="170.27" departLane="random" arrivalLane="random" route="!225182646to38913001#1.83.37!var#1" distance="2768.77 1" speedFactor="1.01" reroute="1" state="133188 170400 9 5.10 0 10.70 289800 0 0" pos="1042.14 1037.14 5.78" speed="28.89 28.93" angle="205.95" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to38913001#1.83.37" state="225182646_2 0 0 2763.67 0 0 0 0 -1"/>
+        <device id="routing_225182646to38913001#1.83.37" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to38913001#1.83.38" type="DEFAULT_VEHTYPE@225182646to38913001#1.83.38" depart="174.88" departLane="random" arrivalLane="random" route="!225182646to38913001#1.83.38!var#1" distance="2768.77 1" speedFactor="1.00" reroute="1" state="133188 175000 9 5.10 0 10.62 289800 0 0" pos="900.12 895.12 5.78" speed="28.92 28.83" angle="205.80" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to38913001#1.83.38" state="225182646_2 0 0 2763.67 0 0 0 0 -1"/>
+        <device id="routing_225182646to38913001#1.83.38" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to38913001#1.83.39" type="DEFAULT_VEHTYPE@225182646to38913001#1.83.39" depart="179.48" departLane="random" arrivalLane="random" route="!225182646to38913001#1.83.39!var#1" distance="2768.77 1" speedFactor="0.97" reroute="1" state="133188 179600 9 5.10 0 10.12 289800 0 0" pos="690.55 685.55 5.59" speed="27.96 28.01" angle="204.25" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to38913001#1.83.39" state="225182646_2 0 0 2763.67 0 0 0 0 -1"/>
+        <device id="routing_225182646to38913001#1.83.39" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to38913001#1.83.40" type="DEFAULT_VEHTYPE@225182646to38913001#1.83.40" depart="184.08" departLane="random" arrivalLane="random" route="!225182646to38913001#1.83.40!var#1" distance="2768.77 1" speedFactor="0.98" reroute="1" state="133188 184200 9 5.10 0 10.09 289800 0 0" pos="587.13 582.13 5.65" speed="28.23 28.19" angle="203.95" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to38913001#1.83.40" state="225182646_2 0 0 2763.67 0 0 0 0 -1"/>
+        <device id="routing_225182646to38913001#1.83.40" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to38913001#1.83.41" type="DEFAULT_VEHTYPE@225182646to38913001#1.83.41" depart="188.68" departLane="random" arrivalLane="random" route="!225182646to38913001#1.83.41!var#1" distance="2768.77 1" speedFactor="1.04" reroute="1" state="133188 188800 9 5.10 0 10.89 289800 0 0" pos="526.57 521.57 5.76" speed="28.80 29.01" angle="204.15" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to38913001#1.83.41" state="225182646_3 0 0 2763.67 0 0 0 0 -1"/>
+        <device id="routing_225182646to38913001#1.83.41" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to38913001#1.83.42" type="DEFAULT_VEHTYPE@225182646to38913001#1.83.42" depart="193.28" departLane="random" arrivalLane="random" route="!225182646to38913001#1.83.42!var#1" distance="2768.77 1" speedFactor="1.01" reroute="1" state="133188 193400 9 5.10 0 10.10 289800 0 0" pos="391.40 386.40 5.79" speed="28.97 28.97" angle="204.15" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to38913001#1.83.42" state="225182646_2 0 0 2763.67 0 0 0 0 -1"/>
+        <device id="routing_225182646to38913001#1.83.42" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to38913001#1.83.43" type="DEFAULT_VEHTYPE@225182646to38913001#1.83.43" depart="197.89" departLane="random" arrivalLane="random" route="!225182646to38913001#1.83.43!var#1" distance="2768.77 1" speedFactor="1.02" reroute="1" state="133188 198000 9 5.10 0 10.19 289800 0 0" pos="260.95 255.95 5.79" speed="28.93 28.98" angle="203.92" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to38913001#1.83.43" state="225182646_3 0 0 2763.67 0 0 0 0 -1"/>
+        <device id="routing_225182646to38913001#1.83.43" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to38913001#1.83.44" type="DEFAULT_VEHTYPE@225182646to38913001#1.83.44" depart="202.49" departLane="random" arrivalLane="random" route="!225182646to38913001#1.83.44!var#1" distance="2447.08 1" speedFactor="0.83" reroute="1" state="133188 202600 7 5.10 0 8.66 289800 0 0" pos="102.28 97.28 4.79" speed="23.97 23.97" angle="199.78" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to38913001#1.83.44" state="225182646_2 0 0 2441.98 0 0 0 0 -1"/>
+        <device id="routing_225182646to38913001#1.83.44" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to38913001#1.83.45" type="DEFAULT_VEHTYPE@225182646to38913001#1.83.45" depart="207.09" departLane="random" arrivalLane="random" route="!225182646to38913001#1.83.45!var#1" distance="2768.77 1" speedFactor="1.06" reroute="1" state="133188 207200 9 5.10 0 10.31 289800 0 0" pos="17.39 12.39 5.78" speed="28.92 28.82" angle="201.94" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to38913001#1.83.45" state="225182646_3 0 0 2763.67 0 0 0 0 -1"/>
+        <device id="routing_225182646to38913001#1.83.45" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to38913001#1.83.46" type="DEFAULT_VEHTYPE@225182646to38913001#1.83.46" depart="211.69" departLane="random" arrivalLane="random" route="!225182646to38913001#1.83.46!var#1" distance="2447.08 1" speedFactor="0.91" reroute="1" state="133188 211800 7 5.10 0 9.15 289800 0 0" pos="13.99 8.99 5.24" speed="26.20 26.32" angle="201.71" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to38913001#1.83.46" state="225182646_0 0 0 2441.98 0 0 0 0 -1"/>
+        <device id="routing_225182646to38913001#1.83.46" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to38913001#1.83.47" type="DEFAULT_VEHTYPE@225182646to38913001#1.83.47" depart="216.29" departLane="random" arrivalLane="random" route="!225182646to38913001#1.83.47!var#1" distance="2447.08 1" speedFactor="1.10" reroute="1" state="133188 216400 7 5.10 0 11.11 289800 0 0" pos="57.89 52.89 6.35" speed="31.73 31.75" angle="201.34" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to38913001#1.83.47" state="225182646_2 0 0 2441.98 0 0 0 0 -1"/>
+        <device id="routing_225182646to38913001#1.83.47" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to38913001#1.83.48" type="DEFAULT_VEHTYPE@225182646to38913001#1.83.48" depart="220.90" departLane="random" arrivalLane="random" route="!225182646to38913001#1.83.48!var#1" distance="1990.08 1" speedFactor="0.96" reroute="1" state="133188 221000 4 5.10 0 9.89 289800 0 0" pos="237.96 232.96 7.51" speed="37.54 37.52" angle="208.84" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to38913001#1.83.48" state="225182646_0 0 0 1984.98 0 0 0 0 -1"/>
+        <device id="routing_225182646to38913001#1.83.48" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to38913001#1.83.49" type="DEFAULT_VEHTYPE@225182646to38913001#1.83.49" depart="225.50" departLane="random" arrivalLane="random" route="!225182646to38913001#1.83.49!var#1" distance="1990.08 1" speedFactor="0.95" reroute="1" state="133188 225800 4 5.10 0 9.67 289800 0 0" pos="56.13 51.13 7.46" speed="37.32 37.36" angle="211.18" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to38913001#1.83.49" state="225182646_1 0 0 1984.98 0 0 0 0 -1"/>
+        <device id="routing_225182646to38913001#1.83.49" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to38913001#1.83.50" type="DEFAULT_VEHTYPE@225182646to38913001#1.83.50" depart="230.10" departLane="random" arrivalLane="random" route="!225182646to38913001#1.83.50!var#1" distance="1981.89 1" speedFactor="1.07" reroute="1" state="133188 230200 3 5.10 0 10.55 289800 0 0" pos="1.69 54.77 7.88" speed="39.42 39.39" angle="208.40" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to38913001#1.83.50" state="225182646_1 0 0 1976.79 0 0 0 0 -1"/>
+        <device id="routing_225182646to38913001#1.83.50" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to38913001#1.83.51" type="DEFAULT_VEHTYPE@225182646to38913001#1.83.51" depart="234.70" departLane="random" arrivalLane="random" route="!225182646to38913001#1.83.51!var#1" distance="1079.05 1" speedFactor="1.06" reroute="1" state="133188 234800 2 5.10 0 10.54 289800 0 0" pos="719.47 714.47 7.84" speed="39.21 39.42" angle="209.14" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to38913001#1.83.51" state="225182646_2 0 0 1073.95 0 0 0 0 -1"/>
+        <device id="routing_225182646to38913001#1.83.51" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to38913001#1.83.52" type="DEFAULT_VEHTYPE@225182646to38913001#1.83.52" depart="239.30" departLane="random" arrivalLane="random" route="!225182646to38913001#1.83.52!var#1" distance="1079.05 1" speedFactor="0.93" reroute="1" state="133188 239400 2 5.10 0 9.10 289800 0 0" pos="437.34 432.34 7.27" speed="36.36 36.42" angle="204.67" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to38913001#1.83.52" state="225182646_1 0 0 1073.95 0 0 0 0 -1"/>
+        <device id="routing_225182646to38913001#1.83.52" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to38913001#1.83.53" type="DEFAULT_VEHTYPE@225182646to38913001#1.83.53" depart="243.91" departLane="random" arrivalLane="random" route="!225182646to38913001#1.83.53!var#1" distance="1079.05 1" speedFactor="1.10" reroute="1" state="133188 244000 2 5.10 0 10.93 289800 0 0" pos="360.21 355.21 7.86" speed="39.28 39.21" angle="204.67" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to38913001#1.83.53" state="225182646_2 0 0 1073.95 0 0 0 0 -1"/>
+        <device id="routing_225182646to38913001#1.83.53" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to38913001#1.83.54" type="DEFAULT_VEHTYPE@225182646to38913001#1.83.54" depart="248.51" departLane="random" arrivalLane="random" route="!225182646to38913001#1.83.54!var#1" distance="1079.05 1" speedFactor="1.10" reroute="1" state="133188 248600 2 5.10 0 10.88 289800 0 0" pos="179.65 174.65 7.88" speed="39.42 39.30" angle="204.27" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to38913001#1.83.54" state="225182646_2 0 0 1073.95 0 0 0 0 -1"/>
+        <device id="routing_225182646to38913001#1.83.54" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to38913001#1.83.55" type="DEFAULT_VEHTYPE@225182646to38913001#1.83.55" depart="253.11" departLane="random" arrivalLane="random" route="!225182646to38913001#1.83.55!var#1" distance="0 1" speedFactor="1.18" reroute="1" state="133188 253400 0 5.10 0 14.01 289800 0 0" pos="986.26 981.26 7.89" speed="39.43 39.41" angle="204.27" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to38913001#1.83.55" state="225182646_0 0 0 -5.1 0 0 0 0 -1"/>
+        <device id="routing_225182646to38913001#1.83.55" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to38913001#1.83.56" type="DEFAULT_VEHTYPE@225182646to38913001#1.83.56" depart="257.71" departLane="random" arrivalLane="random" route="!225182646to38913001#1.83.56!var#1" distance="0 1" speedFactor="1.00" reroute="1" state="133188 257800 0 5.10 0 9.84 289800 0 0" pos="881.76 876.76 7.85" speed="39.27 39.20" angle="204.27" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to38913001#1.83.56" state="225182646_0 0 0 -5.1 0 0 0 0 -1"/>
+        <device id="routing_225182646to38913001#1.83.56" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to38913001#1.83.57" type="DEFAULT_VEHTYPE@225182646to38913001#1.83.57" depart="262.31" departLane="random" arrivalLane="random" route="!225182646to38913001#1.83.57!var#1" distance="0 1" speedFactor="0.94" reroute="1" state="133188 262400 0 5.10 0 9.62 289800 0 0" pos="665.27 660.27 7.41" speed="37.07 36.99" angle="204.27" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to38913001#1.83.57" state="225182646_2 0 0 -5.1 0 0 0 0 -1"/>
+        <device id="routing_225182646to38913001#1.83.57" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to38913001#1.83.58" type="DEFAULT_VEHTYPE" depart="266.92" departLane="random" arrivalLane="random" route="!225182646to38913001#1.83.58!var#1" distance="0 1" speedFactor="1.03" reroute="1" state="133188 267000 0 5.10 0 10.55 289800 0 0" pos="503.59 498.59 8.10" speed="40.50 40.49" angle="204.30" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to38913001#1.83.58" state="225182646_0 0 0 -5.1 0 0 0 0 -1"/>
+        <device id="routing_225182646to38913001#1.83.58" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to38913001#1.83.59" type="DEFAULT_VEHTYPE" depart="271.52" departLane="random" arrivalLane="random" route="!225182646to38913001#1.83.59!var#1" distance="0 1" speedFactor="1.06" reroute="1" state="133188 271600 0 5.10 0 10.48 289800 0 0" pos="328.27 323.27 6.95" speed="34.74 34.30" angle="204.30" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to38913001#1.83.59" state="225182646_2 0 0 -5.1 0 0 0 0 -1"/>
+        <device id="routing_225182646to38913001#1.83.59" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to38913001#1.83.60" type="DEFAULT_VEHTYPE" depart="276.12" departLane="random" arrivalLane="random" route="!225182646to38913001#1.83.60!var#1" distance="0 1" speedFactor="1.03" reroute="1" state="133188 276200 0 5.10 0 9.07 289800 0 0" pos="189.44 184.44 5.23" speed="26.16 25.83" angle="204.30" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to38913001#1.83.60" state="225182646_2 0 0 -5.1 0 0 0 0 -1"/>
+        <device id="routing_225182646to38913001#1.83.60" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to38913001#1.83.61" type="DEFAULT_VEHTYPE" depart="280.72" departLane="random" arrivalLane="random" route="!225182646to38913001#1.83.61!var#1" distance="0 1" speedFactor="1.12" reroute="1" state="133188 280800 0 5.10 0 7.12 289800 0 0" pos="87.98 82.98 3.67" speed="18.36 17.93" angle="204.30" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to38913001#1.83.61" state="225182646_3 0 0 -5.1 0 0 0 0 -1"/>
+        <device id="routing_225182646to38913001#1.83.61" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to38913001#1.83.62" type="DEFAULT_VEHTYPE" depart="285.32" departLane="random" arrivalLane="random" route="!225182646to38913001#1.83.62!var#1" distance="0 1" speedFactor="1.03" reroute="1" state="133188 285400 0 5.10 0 3.93 289800 0 0" pos="24.38 19.38 1.60" speed="7.98 7.66" angle="204.30" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to38913001#1.83.62" state="225182646_2 0 0 -5.1 0 0 0 0 -1"/>
+        <device id="routing_225182646to38913001#1.83.62" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to89932034#0.43" type="DEFAULT_VEHTYPE@225182646to89932034#0.43" depart="213.15" departLane="random" arrivalLane="random" route="!225182646to89932034#0.43!var#1" distance="2245.69 1" speedFactor="1.12" reroute="1" state="133188 213200 5 5.10 0 12.60 289800 0 0" pos="222.25 217.25 4.96" speed="24.81 24.90" angle="236.02" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to89932034#0.43" state="225182646_3 0 0 2240.59 0 0 0 0 -1"/>
+        <device id="routing_225182646to89932034#0.43" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to89932034#0.44" type="DEFAULT_VEHTYPE@225182646to89932034#0.44" depart="218.11" departLane="random" arrivalLane="random" route="!225182646to89932034#0.44!var#1" distance="2245.69 1" speedFactor="1.07" reroute="1" state="133188 218200 5 5.10 0 11.28 289800 0 0" pos="103.83 98.83 4.72" speed="23.59 23.59" angle="238.95" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to89932034#0.44" state="225182646_3 0 0 2240.59 0 0 0 0 -1"/>
+        <device id="routing_225182646to89932034#0.44" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to89932034#0.45" type="DEFAULT_VEHTYPE@225182646to89932034#0.45" depart="223.07" departLane="random" arrivalLane="random" route="!225182646to89932034#0.45!var#1" distance="1990.08 1" speedFactor="0.97" reroute="1" state="133188 223200 4 5.10 0 9.81 289800 0 0" pos="183.64 178.64 6.79" speed="33.97 34.87" angle="208.84" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to89932034#0.45" state="225182646_3 0 0 1984.98 0 0 0 0 -1"/>
+        <device id="routing_225182646to89932034#0.45" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to89932034#0.46" type="DEFAULT_VEHTYPE@225182646to89932034#0.46" depart="228.02" departLane="random" arrivalLane="random" route="!225182646to89932034#0.46!var#1" distance="1079.05 1" speedFactor="0.89" reroute="1" state="133188 228200 2 5.10 0 9.16 289800 0 0" pos="775.00 770.00 7.02" speed="35.08 35.08" angle="210.36" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to89932034#0.46" state="225182646_0 0 0 1073.95 0 0 0 0 -1"/>
+        <device id="routing_225182646to89932034#0.46" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to89932034#0.47" type="DEFAULT_VEHTYPE@225182646to89932034#0.47" depart="232.98" departLane="random" arrivalLane="random" route="!225182646to89932034#0.47!var#1" distance="1079.05 1" speedFactor="1.03" reroute="1" state="133188 233000 2 5.10 0 10.48 289800 0 0" pos="774.67 769.67 7.88" speed="39.42 39.43" angle="210.36" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to89932034#0.47" state="225182646_3 0 0 1073.95 0 0 0 0 -1"/>
+        <device id="routing_225182646to89932034#0.47" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to89932034#0.48" type="DEFAULT_VEHTYPE@225182646to89932034#0.48" depart="237.94" departLane="random" arrivalLane="random" route="!225182646to89932034#0.48!var#1" distance="1079.05 1" speedFactor="0.96" reroute="1" state="133188 238000 2 5.10 0 9.70 289800 0 0" pos="519.24 514.24 7.57" speed="37.83 37.65" angle="205.89" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to89932034#0.48" state="225182646_0 0 0 1073.95 0 0 0 0 -1"/>
+        <device id="routing_225182646to89932034#0.48" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to89932034#0.49" type="DEFAULT_VEHTYPE@225182646to89932034#0.49" depart="242.89" departLane="random" arrivalLane="random" route="!225182646to89932034#0.49!var#1" distance="1079.05 1" speedFactor="0.87" reroute="1" state="133188 243000 2 5.10 0 8.64 289800 0 0" pos="229.15 224.15 6.83" speed="34.13 34.05" angle="204.27" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to89932034#0.49" state="225182646_0 0 0 1073.95 0 0 0 0 -1"/>
+        <device id="routing_225182646to89932034#0.49" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to89932034#0.50" type="DEFAULT_VEHTYPE@225182646to89932034#0.50" depart="247.85" departLane="random" arrivalLane="random" route="!225182646to89932034#0.50!var#1" distance="1079.05 1" speedFactor="1.01" reroute="1" state="133188 248000 2 5.10 0 9.78 289800 0 0" pos="194.68 189.68 7.84" speed="39.22 39.36" angle="204.27" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to89932034#0.50" state="225182646_0 0 0 1073.95 0 0 0 0 -1"/>
+        <device id="routing_225182646to89932034#0.50" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to89932034#0.51" type="DEFAULT_VEHTYPE@225182646to89932034#0.51" depart="252.81" departLane="random" arrivalLane="random" route="!225182646to89932034#0.51!var#1" distance="0 1" speedFactor="0.92" reroute="1" state="133188 253000 0 5.10 0 8.94 289800 0 0" pos="1018.07 1013.07 7.27" speed="36.35 36.23" angle="204.27" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to89932034#0.51" state="225182646_3 0 0 -5.1 0 0 0 0 -1"/>
+        <device id="routing_225182646to89932034#0.51" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to89932034#0.52" type="DEFAULT_VEHTYPE@225182646to89932034#0.52" depart="257.76" departLane="random" arrivalLane="random" route="!225182646to89932034#0.52!var#1" distance="0 1" speedFactor="0.99" reroute="1" state="133188 258200 0 5.10 0 9.84 289800 0 0" pos="856.02 851.02 7.79" speed="38.97 38.87" angle="204.27" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to89932034#0.52" state="225182646_2 0 0 -5.1 0 0 0 0 -1"/>
+        <device id="routing_225182646to89932034#0.52" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to89932034#0.53" type="DEFAULT_VEHTYPE@225182646to89932034#0.53" depart="262.72" departLane="random" arrivalLane="random" route="!225182646to89932034#0.53!var#1" distance="0 1" speedFactor="1.10" reroute="1" state="133188 263000 0 5.10 0 11.84 289800 0 0" pos="656.02 651.02 8.67" speed="43.35 43.50" angle="204.27" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to89932034#0.53" state="225182646_1 0 0 -5.1 0 0 0 0 -1"/>
+        <device id="routing_225182646to89932034#0.53" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to89932034#0.54" type="DEFAULT_VEHTYPE" depart="267.68" departLane="random" arrivalLane="random" route="!225182646to89932034#0.54!var#1" distance="0 1" speedFactor="1.02" reroute="1" state="133188 267800 0 5.10 0 10.30 289800 0 0" pos="477.16 472.16 8.03" speed="40.15 40.16" angle="204.30" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to89932034#0.54" state="225182646_1 0 0 -5.1 0 0 0 0 -1"/>
+        <device id="routing_225182646to89932034#0.54" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to89932034#0.55" type="DEFAULT_VEHTYPE" depart="272.64" departLane="random" arrivalLane="random" route="!225182646to89932034#0.55!var#1" distance="0 1" speedFactor="1.15" reroute="1" state="133188 273000 0 5.10 0 10.61 289800 0 0" pos="286.34 281.34 6.69" speed="33.44 33.02" angle="204.30" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to89932034#0.55" state="225182646_1 0 0 -5.1 0 0 0 0 -1"/>
+        <device id="routing_225182646to89932034#0.55" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to89932034#0.56" type="DEFAULT_VEHTYPE" depart="277.59" departLane="random" arrivalLane="random" route="!225182646to89932034#0.56!var#1" distance="0 1" speedFactor="0.82" reroute="1" state="133188 277800 0 5.10 0 7.46 289800 0 0" pos="152.44 147.44 4.86" speed="24.30 23.80" angle="204.30" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to89932034#0.56" state="225182646_3 0 0 -5.1 0 0 0 0 -1"/>
+        <device id="routing_225182646to89932034#0.56" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to89932034#0.57" type="DEFAULT_VEHTYPE" depart="282.55" departLane="random" arrivalLane="random" route="!225182646to89932034#0.57!var#1" distance="0 1" speedFactor="1.01" reroute="1" state="133188 282600 0 5.10 0 5.84 289800 0 0" pos="59.29 54.29 2.87" speed="14.36 13.94" angle="204.30" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to89932034#0.57" state="225182646_2 0 0 -5.1 0 0 0 0 -1"/>
+        <device id="routing_225182646to89932034#0.57" state="0"/>
+    </vehicle>
+    <vehicle id="225182646to89932034#0.58" type="DEFAULT_VEHTYPE" depart="287.51" departLane="random" arrivalLane="random" route="!225182646to89932034#0.58!var#1" distance="0 1" speedFactor="1.07" reroute="1" state="133188 287600 0 5.10 0 2.07 289800 0 0" pos="10.62 5.62 0.88" speed="4.38 3.99" angle="204.30" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_225182646to89932034#0.58" state="225182646_3 0 0 -5.1 0 0 0 0 -1"/>
+        <device id="routing_225182646to89932034#0.58" state="0"/>
+    </vehicle>
+    <vehicle id="38912992#1to38913001#1.83.5" type="DEFAULT_VEHTYPE@38912992#1to38913001#1.83.5" depart="145.12" departLane="random" arrivalLane="random" route="!38912992#1to38913001#1.83.5!var#1" distance="477.05 1" speedFactor="0.91" reroute="1" state="133188 145200 2 5.10 0 6.98 289800 0 0" pos="3052.83 3047.83 5.30" speed="26.50 26.58" angle="215.23" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_38912992#1to38913001#1.83.5" state="38912992#1_0 0 0 471.95 0 0 0 0 -1"/>
+        <device id="routing_38912992#1to38913001#1.83.5" state="0"/>
+    </vehicle>
+    <vehicle id="38912992#1to38913001#1.83.6" type="DEFAULT_VEHTYPE@38912992#1to38913001#1.83.6" depart="174.14" departLane="random" arrivalLane="random" route="!38912992#1to38913001#1.83.6!var#1" distance="477.05 1" speedFactor="1.03" reroute="1" state="133188 174200 2 5.10 0 9.17 289800 0 0" pos="2507.09 2502.09 5.79" speed="28.97 29.04" angle="215.19" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_38912992#1to38913001#1.83.6" state="38912992#1_0 0 0 471.95 0 0 0 0 -1"/>
+        <device id="routing_38912992#1to38913001#1.83.6" state="0"/>
+    </vehicle>
+    <vehicle id="38912992#1to38913001#1.83.7" type="DEFAULT_VEHTYPE@38912992#1to38913001#1.83.7" depart="203.17" departLane="random" arrivalLane="random" route="!38912992#1to38913001#1.83.7!var#1" distance="477.05 1" speedFactor="0.92" reroute="1" state="133188 203200 2 5.10 0 7.03 289800 0 0" pos="1525.58 1520.58 5.32" speed="26.59 26.68" angle="206.59" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_38912992#1to38913001#1.83.7" state="38912992#1_0 0 0 471.95 0 0 0 0 -1"/>
+        <device id="routing_38912992#1to38913001#1.83.7" state="0"/>
+    </vehicle>
+    <vehicle id="38912992#1to38913001#1.83.8" type="DEFAULT_VEHTYPE@38912992#1to38913001#1.83.8" depart="232.19" departLane="random" arrivalLane="random" route="!38912992#1to38913001#1.83.8!var#1" distance="477.05 1" speedFactor="1.01" reroute="1" state="133188 232200 2 5.10 0 7.84 289800 0 0" pos="848.93 843.93 5.77" speed="28.85 28.85" angle="204.25" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_38912992#1to38913001#1.83.8" state="38912992#1_0 0 0 471.95 0 0 0 0 -1"/>
+        <device id="routing_38912992#1to38913001#1.83.8" state="0"/>
+    </vehicle>
+    <vehicle id="38912992#1to38913001#1.83.9" type="DEFAULT_VEHTYPE@38912992#1to38913001#1.83.9" depart="261.22" departLane="random" arrivalLane="random" route="!38912992#1to38913001#1.83.9!var#1" distance="477.05 1" speedFactor="1.07" reroute="1" state="133188 261400 2 5.10 0 7.86 289800 0 0" pos="30.42 25.42 4.15" speed="20.73 20.30" angle="201.93" posLat="0.00" waitingTime="100000 0">
+        <device id="tripinfo_38912992#1to38913001#1.83.9" state="38912992#1_0 0 0 471.95 0 0 0 0 -1"/>
+        <device id="routing_38912992#1to38913001#1.83.9" state="0"/>
+    </vehicle>
+    <lane id=":8960122355_0_2">
+        <vehicles value="225182646to38913001#1.83.50"/>
+    </lane>
+    <lane id="225182646_0">
+        <vehicles value="225182646to38913001#1.83.58 225182646to38913001#1.83.56"/>
+    </lane>
+    <lane id="225182646_1">
+        <vehicles value="225182646to89932034#0.54 225182646to38913001#1.83.57 225182646to89932034#0.52"/>
+    </lane>
+    <lane id="225182646_2">
+        <vehicles value="225182646to38913001#1.83.62 225182646to89932034#0.57 225182646to38913001#1.83.60 225182646to89932034#0.53 225182646to89932034#0.51"/>
+    </lane>
+    <lane id="225182646_3">
+        <vehicles value="225182646to89932034#0.58 225182646to38913001#1.83.61 225182646to89932034#0.56 225182646to89932034#0.55 225182646to38913001#1.83.59 225182646to38913001#1.83.55"/>
+    </lane>
+    <lane id="38913001#0_0">
+        <vehicles value="225182646to38913001#1.83.46 225182646to38913001#1.83.44"/>
+    </lane>
+    <lane id="38913001#0_3">
+        <vehicles value="225182646to38913001#1.83.47"/>
+    </lane>
+    <lane id="38913001#1.83_0">
+        <vehicles value="38912992#1to38913001#1.83.9 225182646to38913001#1.83.39 38912992#1to38913001#1.83.8 38912992#1to38913001#1.83.7 225182646to38913001#1.83.32 38912992#1to38913001#1.83.6 225182646to38913001#1.83.25 38912992#1to38913001#1.83.5 225182646to38913001#1.83.19"/>
+    </lane>
+    <lane id="38913001#1.83_1">
+        <vehicles value="225182646to38913001#1.83.45 225182646to38913001#1.83.43 225182646to38913001#1.83.42 225182646to38913001#1.83.40 225182646to38913001#1.83.38 225182646to38913001#1.83.35 225182646to38913001#1.83.34 225182646to38913001#1.83.31 225182646to38913001#1.83.33 225182646to38913001#1.83.30 225182646to38913001#1.83.26 225182646to38913001#1.83.29 225182646to38913001#1.83.23 225182646to38913001#1.83.24"/>
+    </lane>
+    <lane id="38913001#1.83_2">
+        <vehicles value="225182646to38913001#1.83.41 225182646to38913001#1.83.37 225182646to38913001#1.83.36 225182646to38913001#1.83.28 225182646to38913001#1.83.27 225182646to38913001#1.83.22"/>
+    </lane>
+    <lane id="38913001#1.83_3">
+        <vehicles value="225182646to38913001#1.83.21"/>
+    </lane>
+    <lane id="851965843_0">
+        <vehicles value="225182646to89932034#0.49 225182646to38913001#1.83.52 225182646to89932034#0.48 225182646to89932034#0.46"/>
+    </lane>
+    <lane id="851965843_1">
+        <vehicles value="225182646to89932034#0.50 225182646to89932034#0.47"/>
+    </lane>
+    <lane id="851965843_2">
+        <vehicles value="225182646to38913001#1.83.54"/>
+    </lane>
+    <lane id="851965843_3">
+        <vehicles value="225182646to38913001#1.83.53 225182646to38913001#1.83.51"/>
+    </lane>
+    <lane id="89932034#0_0">
+        <vehicles value="225182646to89932034#0.44 225182646to89932034#0.43"/>
+    </lane>
+    <lane id="968492019_0">
+        <vehicles value="225182646to89932034#0.45"/>
+    </lane>
+    <lane id="968492019_1">
+        <vehicles value="225182646to38913001#1.83.49 225182646to38913001#1.83.48"/>
+    </lane>
+</snapshot>

@@ -5,13 +5,13 @@ import os
 import yaml
 from tqdm import trange
 
-import maml_rl.envs
+
 from maml_rl.metalearners import MAMLTRPO
 from maml_rl.baseline import LinearFeatureBaseline
 from maml_rl.samplers import MultiTaskSampler
 from maml_rl.utils.helpers import get_policy_for_env, get_input_size
 from maml_rl.utils.reinforcement_learning import get_returns
-from maml_rl.envs.turnpike import TurnpikeMeta
+
 
 
 def main(args):
@@ -32,16 +32,10 @@ def main(args):
         torch.manual_seed(args.seed)
         torch.cuda.manual_seed_all(args.seed)
 
-    env = TurnpikeMeta(#cfg_file='nets/turnpike_single/net/turnpike/turnpike.single.sumocfg',
-                       load_file='nets/turnpike_single/net/turnpike/turnpike.single.savedstate.xml',
-                       vsl_files='/nets/turnpike_single/net/turnpike/vsl2.0',
-                       use_gui=0,
-                       num_seconds=3600,
-                       delta_time=60,
-                       single_agent=True
-                       )
+    env = gym.make(config['env-name'], **config.get('env-kwargs', {}))
+    print(env)
     env.close()
-
+    
     # Policy
     policy = get_policy_for_env(env,
                                 hidden_sizes=config['hidden-sizes'],
@@ -50,17 +44,18 @@ def main(args):
 
     # Baseline
     baseline = LinearFeatureBaseline(get_input_size(env))
-
+    print('baseline ok ')
     # Sampler
+    
     sampler = MultiTaskSampler(config['env-name'],
-                               env_kwargs=config.get('env-kwargs', {}),
+                               config.get('env-kwargs', {}),
                                batch_size=config['fast-batch-size'],
                                policy=policy,
                                baseline=baseline,
                                env=env,
                                seed=args.seed,
                                num_workers=args.num_workers)
-
+    print('sampler intialize success')
     metalearner = MAMLTRPO(policy,
                            fast_lr=config['fast-lr'],
                            first_order=config['first-order'],
@@ -100,6 +95,7 @@ if __name__ == '__main__':
     import argparse
     import multiprocessing as mp
     mp.set_start_method('spawn')
+    
 
     parser = argparse.ArgumentParser(description='Reinforcement learning with '
         'Model-Agnostic Meta-Learning (MAML) - Train')

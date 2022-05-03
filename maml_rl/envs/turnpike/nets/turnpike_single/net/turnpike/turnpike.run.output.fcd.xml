@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2022-05-02 22:16:01 by Eclipse SUMO sumo Version 1.12.0
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
+
+    <input>
+        <net-file value="maml_rl/envs/turnpike/nets/turnpike_single/net/turnpike/turnpike.single.net.xml"/>
+        <route-files value="maml_rl/envs/turnpike/nets/turnpike_single/net/turnpike/turnpike.single.rou.xml"/>
+        <additional-files value="maml_rl/envs/turnpike/nets/turnpike_single/net/turnpike/turnpike.single.E1asDetectors.additional.xml,maml_rl/envs/turnpike/nets/turnpike_single/net/turnpike/turnpike.single.E2asControlRecoveryPoints.additional.xml"/>
+    </input>
+
+    <output>
+        <fcd-output value="maml_rl/envs/turnpike/nets/turnpike_single/net/turnpike/turnpike.run.output.fcd.xml"/>
+        <tripinfo-output value="maml_rl/envs/turnpike/nets/turnpike_single/net/turnpike/turnpike.run.tripinfo.fcd.xml"/>
+    </output>
+
+    <time>
+        <begin value="0"/>
+        <end value="3600"/>
+        <step-length value="0.5"/>
+    </time>
+
+    <report>
+        <no-warnings value="true"/>
+    </report>
+
+    <traci_server>
+        <remote-port value="50563"/>
+    </traci_server>
+
+    <random_number>
+        <seed value="1"/>
+    </random_number>
+
+    <gui_only>
+        <tracker-interval value="0.5"/>
+    </gui_only>
+
+</configuration>
+-->
+
+<fcd-export xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/fcd_file.xsd">
+</fcd-export>

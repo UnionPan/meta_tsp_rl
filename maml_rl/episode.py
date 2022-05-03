@@ -81,8 +81,8 @@ class BatchEpisodes(object):
     @property
     def returns(self):
         if self._returns is None:
-            self._returns = torch.zeros_like(self.rewards).cuda()
-            return_ = torch.zeros((self.batch_size,), dtype=torch.float32).cuda()
+            self._returns = torch.zeros_like(self.rewards)#.cuda()
+            return_ = torch.zeros((self.batch_size,), dtype=torch.float32)#.cuda()
             #print(self.rewards.is_cuda)
             for i in range(len(self) - 1, -1, -1):
                 return_ = self.gamma * return_ + self.rewards[i] * self.mask[i]
@@ -134,7 +134,7 @@ class BatchEpisodes(object):
         # Compute the advantages based on the values
         deltas = self.rewards + self.gamma * values[1:] - values[:-1]
         self._advantages = torch.zeros_like(self.rewards)
-        gae = torch.zeros((self.batch_size,), dtype=torch.float32).cuda()
+        gae = torch.zeros((self.batch_size,), dtype=torch.float32)#.cuda()
         for i in range(len(self) - 1, -1, -1):
             gae = gae * self.gamma * gae_lambda + deltas[i]
             self._advantages[i] = gae

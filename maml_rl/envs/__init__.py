@@ -61,3 +61,13 @@ register(
     entry_point='maml_rl.envs.navigation:Navigation2DEnv',
     max_episode_steps=100
 )
+
+
+# turnpike
+# -----------------
+
+register(
+    'Turnpike-v0', 
+    entry_point='maml_rl.envs.turnpike.env_turnpike:TurnpikeEnvironment',
+    kwargs={'num_seconds': 600, 'delta_time': 120, 'step_length': 0.5}
+)

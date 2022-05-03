@@ -38,13 +38,13 @@ class NormalMLPPolicy(Policy):
         self.sigma.data.fill_(math.log(init_std))
 
         self.apply(weight_init)
-        self.cuda()
+        #self.cuda()
 
     def forward(self, input, params=None):
         if params is None:
             params = OrderedDict(self.named_parameters())
         #print(params['layer1.bias'].is_cuda)
-        output = input.cuda()
+        output = input#.cuda()
         #print(output.is_cuda)
         for i in range(1, self.num_layers):
             output = F.linear(output,

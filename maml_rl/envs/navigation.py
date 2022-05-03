@@ -62,3 +62,8 @@ class Navigation2DEnv(gym.Env):
         done = ((np.abs(x) < 0.01) and (np.abs(y) < 0.01))
 
         return self._state, reward, done, {'task': self._task}
+
+
+if __name__ == "__main__":
+    env = Navigation2DEnv()
+    print(env)
