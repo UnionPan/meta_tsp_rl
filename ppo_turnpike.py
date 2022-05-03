@@ -52,9 +52,9 @@ def add_arguments():
                         help='random seed')
     parser.add_argument('--num_episode', type=int, default=80,
                         help='total episode of training')
-    parser.add_argument('--batch_size', type=int, default=528,
+    parser.add_argument('--batch_size', type=int, default=256,
                         help='batch size of transitions per episode')
-    parser.add_argument('--max_step_per_episode', type=int, default=500,
+    parser.add_argument('--max_step_per_episode', type=int, default=120,
                         help='maximum step to run per episode')
     parser.add_argument('--gamma', type=float, default=0.995,
                         help='discounted factor')

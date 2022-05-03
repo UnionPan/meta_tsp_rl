@@ -102,7 +102,7 @@ class TurnpikeEnvironment(gym.Env):
         self.flowGenerator.get_info()
         self.sim_state_file = None
         
-        self.duplicate_folder = WORK_PATH + '/nets/turnpike_single/net/turnpike/states/' + str(int(time.time()))
+        self.duplicate_folder = WORK_PATH + 'maml_rl/envs/turnpike/nets/turnpike_single/net/turnpike/states/' + str(int(time.time()))
         self.duplicate_sim_state_folder(WORK_PATH + '/' + save_folder, self.duplicate_folder)
         self.save_sim_folder = self.duplicate_folder
         self.saved_sim = self._get_files_under_folder(self.save_sim_folder)
