@@ -1,8 +1,9 @@
 import torch
-import torch.multiprocessing as mp
+import multiprocess as mp
 import asyncio
 import threading
 import time
+import numpy as np
 
 from datetime import datetime, timezone
 from copy import deepcopy
@@ -232,6 +233,7 @@ class SamplerWorker(mp.Process):
         self.envs = SyncVectorEnv(env_fns,
                                   observation_space=observation_space,
                                   action_space=action_space)
+        #print(self.envs)
         self.envs.seed(None if (seed is None) else seed + index * batch_size)
         self.batch_size = batch_size
         self.policy = policy
@@ -248,7 +250,8 @@ class SamplerWorker(mp.Process):
                fast_lr=0.5,
                gamma=0.95,
                gae_lambda=1.0,
-               device='cpu'):
+               device='cpu',
+               dumb_action=False):
         # Sample the training trajectories with the initial policy and adapt the
         # policy to the task, based on the REINFORCE loss computed on the
         # training trajectories. The gradient update in the fast adaptation uses
@@ -260,7 +263,8 @@ class SamplerWorker(mp.Process):
             train_episodes = self.create_episodes(params=params,
                                                   gamma=gamma,
                                                   gae_lambda=gae_lambda,
-                                                  device=device)
+                                                  device=device, 
+                                                  dumb_action=dumb_action)
             train_episodes.log('_enqueueAt', datetime.now(timezone.utc))
             # QKFIX: Deep copy the episodes before sending them to their
             # respective queues, to avoid a race condition. This issue would 
@@ -279,7 +283,8 @@ class SamplerWorker(mp.Process):
         valid_episodes = self.create_episodes(params=params,
                                               gamma=gamma,
                                               gae_lambda=gae_lambda,
-                                              device=device)
+                                              device=device,
+                                              dumb_action=dumb_action)
         valid_episodes.log('_enqueueAt', datetime.now(timezone.utc))
         self.valid_queue.put((index, None, deepcopy(valid_episodes)))
 
@@ -287,7 +292,8 @@ class SamplerWorker(mp.Process):
                         params=None,
                         gamma=0.95,
                         gae_lambda=1.0,
-                        device='cpu'):
+                        device='cpu',
+                        dumb_action=False):
         episodes = BatchEpisodes(batch_size=self.batch_size,
                                  gamma=gamma,
                                  device=device)
@@ -295,7 +301,7 @@ class SamplerWorker(mp.Process):
         episodes.log('process_name', self.name)
 
         t0 = time.time()
-        for item in self.sample_trajectories(params=params):
+        for item in self.sample_trajectories(params=params, dumb_action=dumb_action):
             episodes.append(*item)
         episodes.log('duration', time.time() - t0)
 
@@ -305,7 +311,7 @@ class SamplerWorker(mp.Process):
                                     normalize=True)
         return episodes
 
-    def sample_trajectories(self, params=None):
+    def sample_trajectories(self, params=None, dumb_action=False):
         observations = self.envs.reset()
         with torch.no_grad():
             while not self.envs.dones.all():
@@ -313,6 +319,8 @@ class SamplerWorker(mp.Process):
                 pi = self.policy(observations_tensor, params=params)
                 actions_tensor = pi.sample()
                 actions = actions_tensor.cpu().numpy()
+                if dumb_action:
+                    actions = np.array([0 for env in self.envs.envs])
 
                 new_observations, rewards, _, infos = self.envs.step(actions)
                 batch_ids = infos['batch_ids']

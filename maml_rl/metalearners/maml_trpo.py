@@ -117,6 +117,8 @@ class MAMLTRPO(GradientBasedMetaLearner):
              cg_iters=10,
              cg_damping=1e-2,
              ls_max_steps=10,
+             writer=None, 
+             Epoch=1,
              ls_backtrack_ratio=0.5):
         num_tasks = len(train_futures[0])
         logs = {}
@@ -168,7 +170,12 @@ class MAMLTRPO(GradientBasedMetaLearner):
             kl = sum(kls) / num_tasks
             if (improve.item() < 0.0) and (kl.item() < max_kl):
                 logs['loss_after'] = to_numpy(losses)
+                logs['improvement'] = to_numpy(
+                    (sum(losses) / num_tasks) - old_loss).tolist()
                 logs['kl_after'] = to_numpy(kls)
+                if writer != None:
+                    writer.add_scalar("loss/kl", kl.item(), Epoch)
+                    writer.add_scalar("loss/surrogate_loss", to_numpy(sum(losses) / num_tasks).tolist(), Epoch)
                 break
             step_size *= ls_backtrack_ratio
         else:

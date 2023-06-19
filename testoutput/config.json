@@ -2,7 +2,8 @@
   "env-name": "Turnpike-v0",
   "env-kwargs": {
     "delta_time": 60,
-    "step_length": 0.5
+    "step_length": 0.5,
+    "use_gui": 0
   },
   "gamma": 0.99,
   "gae-lambda": 1.0,
@@ -12,11 +13,11 @@
     64
   ],
   "nonlinearity": "tanh",
-  "fast-batch-size": 10,
+  "fast-batch-size": 20,
   "num-steps": 1,
   "fast-lr": 0.1,
-  "num-batches": 500,
-  "meta-batch-size": 2,
+  "num-batches": 100,
+  "meta-batch-size": 5,
   "max-kl": 0.01,
   "cg-iters": 10,
   "cg-damping": 1e-05,
@@ -25,7 +26,7 @@
   "config": "configs/maml/Turnpike.yaml",
   "output_folder": "testoutput",
   "seed": 1,
-  "num_workers": 1,
+  "num_workers": 3,
   "use_cuda": false,
   "device": "cpu"
 }

@@ -9,7 +9,7 @@ import pandas as pd
 from os.path import join as joindir
 import os
 import matplotlib.pyplot as plt
-from maml_rl.envs.turnpike.env_turnpike1 import TurnpikeEnvironment
+from maml_rl.envs.turnpike.env_turnpike import TurnpikeEnvironment
 import numpy as np
 import traci
 import torch
@@ -50,7 +50,7 @@ def add_arguments():
                         help='gym environment to test algorithm')
     parser.add_argument('--seed', type=int, default=64,
                         help='random seed')
-    parser.add_argument('--num_episode', type=int, default=80,
+    parser.add_argument('--num_episode', type=int, default=1,
                         help='total episode of training')
     parser.add_argument('--batch_size', type=int, default=256,
                         help='batch size of transitions per episode')
@@ -100,7 +100,7 @@ class PPO_Turnpike:
     def __init__(self, args):
         self.args = args
         self.env = TurnpikeEnvironment(
-                                      use_gui=0,
+                                      use_gui=1,
                                       num_seconds=600,
                                       delta_time=60
                                       )
@@ -317,18 +317,19 @@ class PPO_Turnpike:
             record_dfs = record_dfs.merge(
                 reward_record_temp, how='outer', on='steps', suffixes=('', '_{}'.format(j)))
             reward_cols.append('reward_{}'.format(j))
-
+            self.plot_figure(datestr, record_dfs, reward_cols)
         self.plot_figure(datestr, record_dfs, reward_cols)
    
     def plot_figure(self, datestamp, record_dfs, reward_cols):
         "ploting figure using pandas"
-
+        print ('.............. plotting figures ...............')
         record_dfs = record_dfs.drop(columns='reward').sort_values(
             by='steps', ascending=True).ffill().bfill()
         record_dfs['reward_mean'] = record_dfs[reward_cols].mean(axis=1)
         record_dfs['reward_std'] = record_dfs[reward_cols].std(axis=1)
         record_dfs['reward_smooth'] = record_dfs['reward_mean'].ewm(
             span=20).mean()
+        print (record_dfs)
         record_dfs.to_csv(joindir(
             RESULT_DIR, 'ppo-record-{}-{}.csv'.format(self.args.env_name, datestamp)))
 

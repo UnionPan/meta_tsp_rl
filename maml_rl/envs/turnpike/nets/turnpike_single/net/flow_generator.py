@@ -3,6 +3,8 @@ import sumolib
 import numpy as np
 import random
 import os
+import xml.etree.cElementTree as ET
+
 
 SIM_BEGIN = 0
 SIM_END = 3599
@@ -53,7 +55,7 @@ class SumoNet:
         self.nodes_info = nodes_info
         
     def search_connected_graphs(self):
-        print ("Checking all connected components under network ...")
+        # print ("Checking all connected components under network ...")
         Conn_ = {}
         ''' depth first search recursion '''
         def DFS(edge, start):
@@ -89,6 +91,13 @@ class SumoNet:
         self.start_edges = start_edges
         self.end_edges = end_edges
         
+    def get_info(self):
+        self.get_edges_info()   
+        # print ('---------------------', self.edges_info)
+        self.get_nodes_info_from_edges()
+        self.get_start_end_edges()
+        self.search_connected_graphs()
+        
     def __init__(self, path:str):
         self.net = sumolib.net.readNet(path)
         self.nodes = sumolib.xml.parse(path, ['node'])
@@ -100,15 +109,11 @@ class SumoNet:
         self.end_edges = []
         self.Conn_ = {}
         self.filepath = path
-        
-    def get_info(self):
-        self.get_edges_info()   
-        self.get_nodes_info_from_edges()
-        self.get_start_end_edges()
-        self.search_connected_graphs()
+        self.get_info()
+    
         
     def generate_OD_by_Gaussian(self, flow_mean=150, flow_sd=100):
-        print ("Generating random traffics by O-D ...")
+        # print ("Generating random traffics by O-D ...")
         if self.Conn_ == {}:
             raise("Please get network connectivity beforehand!")
         if flow_mean < flow_sd:
@@ -126,7 +131,7 @@ class SumoNet:
         self.OD = OD
         
     def generate_OD_by_Gaussian_w_multipler(self, flow_mean=3000, flow_sd=100):
-        print ("Generating random traffics by O-D ...")
+        # print ("Generating random traffics by O-D ...")
         if self.Conn_ == {}:
             raise("Please get network connectivity beforehand!")
         if flow_mean < flow_sd:
@@ -176,7 +181,7 @@ class SumoNet:
                 OD[o][d] = 0 if start not in self.Conn_[end] else int(max(np.random.normal(flow_mean, flow_sd, 1)[0], 20)* multiplier)
         # print(OD)
         self.OD = OD    
-    
+        print (OD)
     
     def generate_route_file(self, filename, multiclass=False):
         # print ("Building route xml file " + filename)
@@ -195,20 +200,136 @@ class SumoNet:
                     flows.write(('                <flow arrivalLane="%s" departLane="%s" from="%s" to="%s" number="%s" id="%s"/>\n') %("random", "random", start, end, int(self.OD[o][d]), str(start+"to"+end) ))
                     flows.write('        </interval>\n')
             flows.write('</flows>\n')
+        print (filename)
+ 
+    
+
+class FlowGenerator:
+    def __init__(self, Conn, start_edges, end_edges, edges_info):
+        self.OD = None
+        self.Conn_ = Conn
+        self.start_edges = start_edges
+        self.end_edges = end_edges
+        self.edges_info = edges_info
         
+    def generateGaussianFlowsByProfiles(self, profiles=np.array([
+                                                        [3000, 400],
+                                                        [500, 100],
+                                                        [1000, 200],
+                                                        [2000, 200]
+                                                        ]
+                                                )
+                                         ):
+        rand_index = np.random.choice(profiles.shape[0], 1)[0]
+        flow_mean, flow_sd = profiles[rand_index]
+        # print ("Generating random traffics by O-D ...")
+        if self.Conn_ == {}:
+            raise("Please get network connectivity beforehand!")
+        if flow_mean < flow_sd:
+            raise("The standard deviation of flows must not be greater than the mean flow!")
+        OD = np.zeros(shape=(len(self.start_edges), len(self.end_edges)))
+        for o in range(OD.shape[0]):
+            for d in range(OD.shape[1]):
+                multiplier = 1
+                start = self.start_edges[o]
+                end = self.end_edges[d]
+                multiplier *= self.edges_info[start]['no.lanes']
+
+                ''' check O-D matrix integrity with a selected end edge '''
+                # if end == '866596939#1':
+                #     print(("start %s end %s: %s")%(start, end, start in self.Conn_[end] ))
+                
+                OD[o][d] = 0 if start not in self.Conn_[end] else int(max(np.random.normal(flow_mean, flow_sd, 1)[0], 20)* multiplier)
+        # print(OD)
+        self.OD = OD    
+        # print (OD)
+    
+    def generate_route_file(self, filename, SIM_BEGIN=0, SIM_END=3600, multiclass=False):
+        # print ("Building route xml file " + filename)
+        if self.OD is None:
+            raise("OD Matrix must be defined beforehand!")
+        flows = ET.Element("flows")
+        for o, start in enumerate(self.start_edges):
+            for d, end in enumerate(self.end_edges):
+                if not self.OD[o][d]:
+                    continue
+                interval = ET.SubElement(flows, "interval", begin=str(SIM_BEGIN), end=str(SIM_END))
+                
+                flow = ET.SubElement(interval, "flow", attrib={'arrivalLane': "random", 
+                                                               'departLane': "random",
+                                                               'from': start,
+                                                               'to': end,
+                                                               'number': str(int(self.OD[o][d])),
+                                                               'id': str(start+"to"+end)
+                                                               })
+        tree = ET.ElementTree(flows)
+        tree.write(filename)
         
+
+# def generateGaussianFlowsByProfiles(OD, Conn, start_edges, end_edges, edges_info, profiles=np.array([
+#                                                     [3000, 400],
+#                                                     [500, 100],
+#                                                     [1000, 200],
+#                                                     [2000, 200]
+#                                                     ]
+#                                             )
+#                                      ):
+#     rand_index = np.random.choice(profiles.shape[0], 1)[0]
+#     flow_mean, flow_sd = profiles[rand_index]
+#     # print ("Generating random traffics by O-D ...")
+
+#     if flow_mean < flow_sd:
+#         raise("The standard deviation of flows must not be greater than the mean flow!")
+#     OD = np.zeros(shape=(len(start_edges), len(end_edges)))
+#     for o in range(OD.shape[0]):
+#         for d in range(OD.shape[1]):
+#             multiplier = 1
+#             start = start_edges[o]
+#             end = end_edges[d]
+#             multiplier *= edges_info[start]['no.lanes']
+
+#             ''' check O-D matrix integrity with a selected end edge '''
+#             # if end == '866596939#1':
+#             #     print(("start %s end %s: %s")%(start, end, start in self.Conn_[end] ))
+            
+#             OD[o][d] = 0 if start not in Conn[end] else int(max(np.random.normal(flow_mean, flow_sd, 1)[0], 20)* multiplier)
+#     # print(OD)
+#     return OD    
         
-        
+# def generate_route_file(filename, OD, start_edges, end_edges, multiclass=False):
+#     if OD is None:
+#         raise("OD Matrix must be defined beforehand!")
+#     optParser = sumolib.options.ArgumentParser()
+#     options = optParser.parse_args()
+#     options.routefile = filename
+#     with open(options.routefile, 'w') as flows:
+#         flows.write('<flows>\n')
+#         for o, start in enumerate(start_edges):
+#             for d, end in enumerate(end_edges):
+#                 if not OD[o][d]:
+#                     continue
+#                 flows.write(('        <interval begin="%s" end="%s">\n' ) % (str(SIM_BEGIN), str(SIM_END)))
+#                 flows.write(('                <flow arrivalLane="%s" departLane="%s" from="%s" to="%s" number="%s" id="%s"/>\n') %("random", "random", start, end, int(OD[o][d]), str(start+"to"+end) ))
+#                 flows.write('        </interval>\n')
+#         flows.write('</flows>\n')     
     
             
         
 if __name__ == "__main__":
+    0
+    
     
     path = WORK_PATH + "/net/turnpike/turnpike.single.net.xml"
     us101_net = SumoNet(path)
-    us101_net.get_info()
-    us101_net.generate_OD_by_Gaussian_w_multipler()
-    us101_net.generate_route_file(filename=WORK_PATH + "/net/turnpike/turnpike.single.rou.xml")
+    fg = FlowGenerator(us101_net.Conn_, us101_net.start_edges, us101_net.end_edges, us101_net.edges_info)
+    fg.generateGaussianFlowsByProfiles()
+    tree = fg.generate_route_file('1.net.xml')
+    tree.write('1.net.xml')
+    
+    # us101_net.edges_info
+    # us101_net.get_info()
+    # us101_net.generate_OD_by_Gaussian_w_multipler()
+    # us101_net.generate_route_file(filename=WORK_PATH + "/net/turnpike/turnpike.single.rou.xml")
     
     # od = us101_net.OD
     

@@ -1,3 +1,4 @@
+from datetime import datetime
 import gym
 import torch
 import json
@@ -11,29 +12,36 @@ from maml_rl.baseline import LinearFeatureBaseline
 from maml_rl.samplers import MultiTaskSampler
 from maml_rl.utils.helpers import get_policy_for_env, get_input_size
 from maml_rl.utils.reinforcement_learning import get_returns
-
+from torch.utils.tensorboard import SummaryWriter
 
 
 def main(args):
+    
+
     with open(args.config, 'r') as f:
         config = yaml.load(f, Loader=yaml.FullLoader)
 
+    
     if args.output_folder is not None:
         if not os.path.exists(args.output_folder):
             os.makedirs(args.output_folder)
         policy_filename = os.path.join(args.output_folder, 'policy.th')
         config_filename = os.path.join(args.output_folder, 'config.json')
-
+        log_filename = os.path.join(args.output_folder, 'logs.txt')
+        summary_file_path = os.path.join(args.output_folder, 'tensorboard')
+        baseline_filename = os.path.join(args.output_folder, 'baseline.pth')
         with open(config_filename, 'w') as f:
             config.update(vars(args))
             json.dump(config, f, indent=2)
-
+    
+    writer = SummaryWriter(summary_file_path + datetime.now().strftime("%y-%m-%d-%H-%M"))
+    
     if args.seed is not None:
         torch.manual_seed(args.seed)
         torch.cuda.manual_seed_all(args.seed)
 
     env = gym.make(config['env-name'], **config.get('env-kwargs', {}))
-    print(env)
+    #print(env)
     env.close()
     
     # Policy
@@ -44,7 +52,11 @@ def main(args):
 
     # Baseline
     baseline = LinearFeatureBaseline(get_input_size(env))
-    print('baseline ok ')
+    if os.path.exists(baseline_filename):
+        print("load exist baseline")
+        with open(baseline_filename, 'rb') as f:
+            baseline.weight = torch.load(f)
+           
     # Sampler
     
     sampler = MultiTaskSampler(config['env-name'],
@@ -55,12 +67,13 @@ def main(args):
                                env=env,
                                seed=args.seed,
                                num_workers=args.num_workers)
-    print('sampler intialize success')
+    
     metalearner = MAMLTRPO(policy,
                            fast_lr=config['fast-lr'],
                            first_order=config['first-order'],
                            device=args.device)
-
+    epoch = 1
+    global_episode = 1
     num_iterations = 0
     for batch in trange(config['num-batches']):
         tasks = sampler.sample_tasks(num_tasks=config['meta-batch-size'])
@@ -75,25 +88,42 @@ def main(args):
                                 cg_iters=config['cg-iters'],
                                 cg_damping=config['cg-damping'],
                                 ls_max_steps=config['ls-max-steps'],
+                                writer = writer,
+                                Epoch = epoch,
                                 ls_backtrack_ratio=config['ls-backtrack-ratio'])
-
+        
         train_episodes, valid_episodes = sampler.sample_wait(futures)
+        writer.add_scalar("reward/sample_train",
+                          get_returns(train_episodes[0]).mean(), epoch)
+        writer.add_scalar("reward/sample_valid",
+                          get_returns(valid_episodes).mean(), epoch)
+        print("writting finished")
+        epoch += 1
         num_iterations += sum(sum(episode.lengths) for episode in train_episodes[0])
         num_iterations += sum(sum(episode.lengths) for episode in valid_episodes)
         logs.update(tasks=tasks,
                     num_iterations=num_iterations,
                     train_returns=get_returns(train_episodes[0]),
                     valid_returns=get_returns(valid_episodes))
-
-        # Save policy
+        
+        # Save policy, baseline, log
         if args.output_folder is not None:
             with open(policy_filename, 'wb') as f:
                 torch.save(policy.state_dict(), f)
+            f.close()
+
+            with open(baseline_filename, 'wb') as f:
+                torch.save(baseline.weight, f)
+            f.close()
+
+            # with open(log_filename, 'a') as f:
+            #     json.dump(logs, f, indent=2)
+            # f.close()
 
 
 if __name__ == '__main__':
     import argparse
-    import multiprocessing as mp
+    import multiprocess as mp
     mp.set_start_method('spawn')
     
 

@@ -11,6 +11,7 @@ from maml_rl.envs.turnpike.nets.turnpike_single.net.flow_generator import SumoNe
 from collections import deque
 import time
 import shutil
+import random
 
 if 'SUMO_HOME' in os.environ:
     tools = os.path.join(os.environ['SUMO_HOME'], 'tools')
@@ -25,11 +26,6 @@ import numpy as np
 import pandas as pd
 
 from gym.utils import EzPickle, seeding
-from pettingzoo import AECEnv
-from pettingzoo.utils.agent_selector import agent_selector
-from pettingzoo import AECEnv
-from pettingzoo.utils import agent_selector, wrappers
-from pettingzoo.utils.conversions import parallel_wrapper_fn
 from gym.spaces.space import Space
 from gym.spaces import Box, Discrete
 from os import walk
@@ -37,14 +33,7 @@ from os import walk
 LIBSUMO = 'LIBSUMO_AS_TRACI' in os.environ
 
 
-def env(**kwargs):
-    env = TurnpikeEnvironment(**kwargs)
-    env = wrappers.AssertOutOfBoundsWrapper(env)
-    env = wrappers.OrderEnforcingWrapper(env)
-    return env
-
 WORK_PATH = os.path.abspath(os.path.join(os.getcwd()))
-parallel_env = parallel_wrapper_fn(env)
 
 
 class TurnpikeEnvironment(gym.Env):
@@ -79,6 +68,7 @@ class TurnpikeEnvironment(gym.Env):
         self._rou = route_file
         self._add = additional_files
         self.use_gui = use_gui 
+        self.spec = EnvSpec('Turnpike-v0')
         if self.use_gui:
             self._sumo_binary = sumolib.checkBinary('sumo-gui')
         else:
@@ -102,11 +92,10 @@ class TurnpikeEnvironment(gym.Env):
         self.flowGenerator.get_info()
         self.sim_state_file = None
         
-        self.duplicate_folder = WORK_PATH + 'maml_rl/envs/turnpike/nets/turnpike_single/net/turnpike/states/' + str(int(time.time()))
-        self.duplicate_sim_state_folder(WORK_PATH + '/' + save_folder, self.duplicate_folder)
+        self.duplicate_folder = 'maml_rl/envs/turnpike/nets/turnpike_single/net/turnpike/states/' + str(int(time.time()))
+        self.duplicate_sim_state_folder(save_folder, self.duplicate_folder)
         self.save_sim_folder = self.duplicate_folder
-        self.saved_sim = self._get_files_under_folder(self.save_sim_folder)
-        
+        self.saved_sim = self._get_files_under_folder(WORK_PATH + '/' + self.save_sim_folder)
         self.mode = mode
         self.obs_horizon = int(obs_horizon)
         self.rwd_horizon = int(rwd_horizon)
@@ -122,7 +111,7 @@ class TurnpikeEnvironment(gym.Env):
     
     def _get_files_under_folder(self, folder):
         f = []
-        mypath = WORK_PATH +  folder
+        mypath = folder
         for (dirpath, dirnames, filenames) in walk(mypath):
             f.extend(filenames)
             break
@@ -138,6 +127,8 @@ class TurnpikeEnvironment(gym.Env):
         traci.simulation.saveState(save_path)
 
     def _start_simulation(self):
+        # print (self.sim_state_file)
+        # print ('####################################')
         if self.sim_state_file is None:
             sumo_cmd = [self._sumo_binary,
                         '-n', self._net,
@@ -184,7 +175,13 @@ class TurnpikeEnvironment(gym.Env):
 
         if self.use_gui:
             self.sumo.gui.setSchema(traci.gui.DEFAULT_VIEW, "real world")
-    
+        '70% chance with lane closed'
+        if random.uniform(0, 1) < 1.0:
+            traci.lane.setDisallowed('38913001#1.83_2', ["passenger"])
+            traci.lane.setDisallowed('38913001#1.83_3', ["passenger"])
+        
+        
+        
     def generate_flow(self):
         self.flowGenerator.generateGaussianFlowsByProfiles()
         self.flowGenerator.generate_route_file(self._rou)
@@ -193,12 +190,13 @@ class TurnpikeEnvironment(gym.Env):
         loc = np.random.choice(len(self.saved_sim)+1, 1)[0]
         # print (loc, len(self.saved_sim))
         if loc < len(self.saved_sim):    
-            sim_state_file = WORK_PATH + self.save_sim_folder + '/' + self.saved_sim[loc]
+            sim_state_file = WORK_PATH + '/' + self.save_sim_folder + '/' + self.saved_sim[loc]
             return sim_state_file
         else:
             return None
     
     def reset(self, seed:  Optional[int] = None, **kwargs):
+        # print (self.saved_sim , WORK_PATH + '/' + self.save_sim_folder)
         if self.run != 0:
             self.close()
             # self.save_csv(self.out_csv_name, self.run)
@@ -228,7 +226,7 @@ class TurnpikeEnvironment(gym.Env):
         ''' metrics related attributes '''
         self.metrics = { 'occupancy': [ deque([], int(self.delta_step*self.obs_horizon)) for dq in range(self.num_vsl+1)],
                         'speed': [ deque([], int(self.delta_step*self.obs_horizon)) for dq in range(self.num_vsl+1)],
-                    'brake_rate':deque([], int(self.delta_step*self.rwd_horizon)),
+                    'halting': [ deque([], int(self.delta_step*self.rwd_horizon)) for dq in range(self.num_vsl+1)],
                     'flow': deque([], int(self.delta_step*self.rwd_horizon)),
                    }
         
@@ -245,9 +243,12 @@ class TurnpikeEnvironment(gym.Env):
         observations = np.zeros(2)
         # print (len(self.metrics['occupancy'][0]) , '!!!!!!!!!!!!!!!!!!!!!')
         
+        observations = None
+        
         if len(self.metrics['occupancy'][0]) < self.metrics['occupancy'][0].maxlen:
             for st_ in range( int(self.delta_step*(self.rwd_horizon + self.obs_horizon))):
                 if st_ == self.delta_step * self.obs_horizon - 1:
+                    observations = self._compute_observations()
                     self._apply_actions(action)
                     self._sumo_step(st_)
                 else:
@@ -256,31 +257,32 @@ class TurnpikeEnvironment(gym.Env):
         else:
             for st_ in range( int(self.delta_step*self.rwd_horizon)):
                 if st_ == 0:
+                    observations = self._compute_observations()
                     self._apply_actions(action)
                     self._sumo_step(st_)
                 else:
                     self._sumo_step(st_)
-        
-        observations = self._compute_observations()
         rewards = self._compute_rewards()
         done = self._compute_dones()
         info = self._compute_info()
+        print (action, rewards)
         return observations, rewards, done, info 
 
     def _get_metrics(self):
         for z, CZ in enumerate(self.vsl_controller.e2Ref):
             occ_measures = []
             vel_measures = []
+            halt_measures = []
             E2s = self.vsl_controller.e2Ref[CZ]
             for detID in E2s:
+                # print (detID)
                 occ_measures.append(traci.lanearea.getLastStepOccupancy(detID))
                 vel_measures.append(traci.lanearea.getLastStepMeanSpeed(detID))
+                halt_measures.append(traci.lanearea.getLastStepMeanSpeed(detID))
             self.metrics['occupancy'][z].append(np.mean(occ_measures))
             self.metrics['speed'][z].append(np.mean(vel_measures))
+            self.metrics['halting'][z].append(np.mean(halt_measures))
         self.metrics['flow'].append(getAverageDetectorFlow())
-        # self.metrics['brake_rate'].append(traci.simulation.getEndingTeleportNumber())
-        self.metrics['brake_rate'].append(getHaltingVehNum())
-
 
     def _sumo_step(self, i):
         self.sumo.simulationStep()
@@ -325,15 +327,15 @@ class TurnpikeEnvironment(gym.Env):
         return obs.flatten()
  
     def _compute_rewards(self):
+        coef_ = np.array([0.25, 0.50, 0.15, 0.10])
         if self.mode == 0:
-            flows = np.array(self.metrics['flow'])
-            r = np.sum(flows) / (self.delta_time) * 3600 
+            meanspeeds = np.average(np.array(self.metrics['speed']), axis=1) 
+            r = max(min( np.sum((meanspeeds-40)*coef_/40), 0), -1)
         elif self.mode == 1:
             # brakerates = np.array(self.metrics['brake_rate']) / traci.vehicle.getIDCount()
-            brakerates = np.array(self.metrics['brake_rate'])
-            r = np.average(brakerates ) / (self.delta_time) * 3600 
-            # print (r)
-        return r
+            meannumhalt = np.average(np.array(self.metrics['halting']), axis=1) 
+            r =  - min(np.sum(meannumhalt/(self.delta_time)*3600/2400* coef_), 1)
+        return r 
     
     def _compute_dones(self):
         dones = False
@@ -402,4 +404,6 @@ if __name__ == '__main__':
     x = deque([], 3)
     x.append(5)
     x
+    
+    a = np.array([30, 40, 50, 60])
     

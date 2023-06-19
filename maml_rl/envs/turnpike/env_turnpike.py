@@ -4,9 +4,9 @@ import sys
 from pathlib import Path
 from typing import Optional, Union, Tuple
 #import sumo_rl
-from maml_rl.envs.turnpike.nets.turnpike_single.net.turnpike.VSLController2 import VSLController
+from maml_rl.envs.turnpike.nets.turnpike_single.net.turnpike.VSLController3 import VSLController
 from maml_rl.envs.turnpike.nets.turnpike_single.net.turnpike.metrics import getAverageDetectorFlow, getAverageTTC
-
+from maml_rl.envs.turnpike.nets.turnpike_single.net.flow_generator import SumoNet, FlowGenerator
 if 'SUMO_HOME' in os.environ:
     tools = os.path.join(os.environ['SUMO_HOME'], 'tools')
     sys.path.append(tools)
@@ -20,26 +20,20 @@ import numpy as np
 import pandas as pd
 
 from gym.utils import EzPickle, seeding
-from pettingzoo import AECEnv
-from pettingzoo.utils.agent_selector import agent_selector
-from pettingzoo import AECEnv
-from pettingzoo.utils import agent_selector, wrappers
-from pettingzoo.utils.conversions import parallel_wrapper_fn
 from gym.spaces.space import Space
 from gym.spaces import Box, Discrete
 
+from os import walk
+import time
+import shutil
+import random
+
+from collections import deque
+
 LIBSUMO = 'LIBSUMO_AS_TRACI' in os.environ
-
-
-def env(**kwargs):
-    env = TurnpikeEnvironment(**kwargs)
-    env = wrappers.AssertOutOfBoundsWrapper(env)
-    env = wrappers.OrderEnforcingWrapper(env)
-    return env
-
-
-parallel_env = parallel_wrapper_fn(env)
-
+WORK_PATH = os.path.abspath(os.path.join(os.getcwd()))
+FLOW_GENERATOR = SumoNet(WORK_PATH + '/maml_rl/envs/turnpike/nets/turnpike_single/net/turnpike/turnpike.single.net.xml')
+# print ('------------------', FLOW_GENERATOR.egdes_info(), '-----------------------')
 
 class TurnpikeEnvironment(gym.Env):
     """
@@ -50,8 +44,10 @@ class TurnpikeEnvironment(gym.Env):
     CONNECTION_LABEL = 0
 
     def __init__(self, 
-                 cfg_file: str='maml_rl/envs/turnpike/nets/turnpike_single/net/turnpike/turnpike.single.sumocfg',
-                 load_file: str = None,
+                 net_file: str = 'maml_rl/envs/turnpike/nets/turnpike_single/net/turnpike/turnpike.single.net.xml',
+                 route_file: str = 'maml_rl/envs/turnpike/nets/turnpike_single/net/turnpike/turnpike.single.rou.xml',
+                 additional_files: str = 'maml_rl/envs/turnpike/nets/turnpike_single/net/turnpike/turnpike.single.E1asDetectors.additional.xml, maml_rl/envs/turnpike/nets/turnpike_single/net/turnpike/turnpike.single.E2asControlRecoveryPoints.additional.xml',
+                 save_folder: str='maml_rl/envs/turnpike/nets/turnpike_single/net/turnpike/states/saved',
                  out_csv_name: Optional[str] = None,
                  vsl_files: list = None,
                  use_gui: bool = False,
@@ -61,15 +57,20 @@ class TurnpikeEnvironment(gym.Env):
                  delta_time: float = 120,
                  single_agent: bool = False,
                  sumo_seed: Union[str, int] = 'random',
-                 sumo_warnings: bool = True,
-                 step_length = 0.5,
+                 sumo_warnings: bool = False,
+                 step_length: float = 0.5,
+                 obs_horizon: int = 2,
+                 rwd_horizon: int = 1,
+                 mode: int = 0,
                  task = {}
                  ):
         super(TurnpikeEnvironment, self).__init__()
         self._task = task
         self._mode = task.get('mode', 0)
         self.spec = EnvSpec('Turnpike-v0')
-        self._cfg = cfg_file
+        self._net = net_file
+        self._rou = route_file
+        self._add = additional_files
         self.use_gui = use_gui 
         if self.use_gui:
             self._sumo_binary = sumolib.checkBinary('sumo-gui')
@@ -87,21 +88,71 @@ class TurnpikeEnvironment(gym.Env):
         self.label = str(TurnpikeEnvironment.CONNECTION_LABEL)
         TurnpikeEnvironment.CONNECTION_LABEL += 1
         self.sumo = None
-        self.vsl_files = 'maml_rl/envs/turnpike/nets/turnpike_single/net/turnpike/vsl2.0',
+        self.vsl_files = '/maml_rl/envs/turnpike/nets/turnpike_single/net/turnpike/vsl2.0',
         self.run = 0
         self.sumo_warnings = False
-        self.out_csv_name = 'turnpike.vsl2.0.save'
-        seed = self.seed(1)
-        self.init_state = self.reset(seed[0])
-       
+        self.sim_state_file = None
         
-        # if LIBSUMO:
-        #     traci.start([sumolib.checkBinary('sumo'), '-n', self._net])
-        #     conn = traci
-        # else:
-        #     traci.start([sumolib.checkBinary('sumo'), '-n',
-        #                  self._net], label='init_connection'+self.label)
-        #     conn = traci.getConnection('init_connection'+self.label)
+        # self.duplicate_folder = 'maml_rl/envs/turnpike/nets/turnpike_single/net/turnpike/states/' + str(int(time.time()))
+        # self.duplicate_sim_state_folder(save_folder, self.duplicate_folder)
+        self.save_sim_folder = 'maml_rl/envs/turnpike/nets/turnpike_single/net/turnpike/states/saved'
+        self.saved_sim = self._get_files_under_folder(WORK_PATH + '/' + self.save_sim_folder)
+        self.mode = mode
+        self.obs_horizon = int(obs_horizon)
+        self.rwd_horizon = int(rwd_horizon)
+        self.out_csv_name = self.save_sim_folder + 'res.csv'
+        
+        if LIBSUMO:
+            traci.start([self._sumo_binary, '-n', self._net])  # Start only to retrieve traffic light information
+            conn = traci
+        else:
+            traci.start([self._sumo_binary, '-n', self._net],
+                        label='init_connection'+self.label)
+            conn = traci.getConnection('init_connection'+self.label)
+            
+        self.speed_limits_set = np.array([-1, 30, 25, 20])
+        self.detectors = traci.lanearea.getIDList()
+        # print (self.detectors)
+        
+        self.vsl_controller = VSLController(*self.vsl_files)
+        self.num_vsl = sum(self.vsl_controller.active)
+        self.numE2 = len(self.vsl_controller.e2Ref)
+        self.observations = np.zeros(self.numE2 * 2 * 2, )
+        self.observation_space = Box(low=0, high=1, shape=(self.numE2 * 2 * 2, ) )
+        self.action_space = Discrete(len(self.speed_limits_set)**1)
+
+
+        self.flow_generator = FlowGenerator(FLOW_GENERATOR.Conn_, FLOW_GENERATOR.start_edges, FLOW_GENERATOR.end_edges, FLOW_GENERATOR.edges_info)
+        ''' generate Gaussian traffic flows ? '''
+        self.generate_flow()
+        
+        conn.close()
+
+    
+        
+    def generate_flow(self):
+        self.flow_generator.generateGaussianFlowsByProfiles()
+        self.flow_generator.generate_route_file(self._rou)
+        
+        
+    def _get_files_under_folder(self, folder):
+        f = []
+        mypath = folder
+        for (dirpath, dirnames, filenames) in walk(mypath):
+            f.extend(filenames)
+            break
+        return f
+    
+    def duplicate_sim_state_folder(self, copyfolder, parsefolder):
+        if not os.path.isfile(parsefolder):
+            shutil.copytree(copyfolder, parsefolder)
+        
+    def save_state(self):
+        save_path = self.save_sim_folder + '/' + str(int(time.time())) + '.xml'
+        # print ('Simulation state at has been saved. Please check the local file ', save_path)
+        
+        traci.simulation.saveState(save_path)
+    
 
     def seed(self, seed=None):
         self.np_random, seed = seeding.np_random(seed)
@@ -116,13 +167,43 @@ class TurnpikeEnvironment(gym.Env):
         self._task = task
         self._mode = task['mode']
         
-
+    def _get_metrics(self):
+        # print ('..................',len( self.metrics['occupancy']))
+        for z, CZ in enumerate(self.vsl_controller.e2Ref):
+            occ_measures = []
+            vel_measures = []
+            halt_measures = []
+            E2s = self.vsl_controller.e2Ref[CZ]
+            for detID in E2s:
+                # print (detID)
+                occ_measures.append(traci.lanearea.getLastStepOccupancy(detID))
+                vel_measures.append(traci.lanearea.getLastStepMeanSpeed(detID))
+                halt_measures.append(traci.lanearea.getLastStepMeanSpeed(detID))
+            self.metrics['occupancy'][z].append(np.mean(occ_measures))
+            self.metrics['speed'][z].append(np.mean(vel_measures))
+            self.metrics['halting'][z].append(np.mean(halt_measures))
+        self.metrics['flow'].append(getAverageDetectorFlow()) 
+        
     def _start_simulation(self):
-        sumo_cmd = [self._sumo_binary,
-                    '-c', self._cfg,
-                    "--step-length", str(self.step_length),
-                    # '--waiting-time-memory', '10000'
-                    ]
+        if self.sim_state_file is None:
+            sumo_cmd = [self._sumo_binary,
+                        '-n', self._net,
+                        '-r', self._rou,
+                        '-a', self._add,
+                        "--step-length", str(self.step_length),
+                        '--window-size', '540, 960',
+                        # '--waiting-time-memory', '10000'
+                        ]
+        else:
+            sumo_cmd = [self._sumo_binary,
+                        '-n', self._net,
+                        '-r', self._rou,
+                        '-a', self._add,
+                        "--step-length", str(self.step_length),
+                        "--load-state", self.sim_state_file,
+                        '--window-size', '540, 960',
+                        # '--waiting-time-memory', '10000'
+                        ]
         if self.begin_time > 0:
             sumo_cmd.append('-b {}'.format(self.begin_time))
         if self.sumo_seed == 'random':
@@ -141,7 +222,6 @@ class TurnpikeEnvironment(gym.Env):
                 self.disp = SmartDisplay(size=self.virtual_display)
                 self.disp.start()
                 print("Virtual display started.")
-        print (sumo_cmd)
         
         if LIBSUMO:
             traci.start(sumo_cmd)
@@ -151,31 +231,47 @@ class TurnpikeEnvironment(gym.Env):
             #self.label = '1'
             traci.start(sumo_cmd, label=self.label)
             self.sumo = traci.getConnection(self.label)
-
+        
         if self.use_gui:
             self.sumo.gui.setSchema(traci.gui.DEFAULT_VIEW, "real world")
+            
+        '100% chance with lane closed'
+        if random.uniform(0, 1) < 1.0:
+            traci.lane.setDisallowed('38913001#1.83_2', ["passenger"])
+            traci.lane.setDisallowed('38913001#1.83_3', ["passenger"])
+
+    def load_state_file(self):
+        loc = np.random.choice(len(self.saved_sim)+1, 1)[0]
+        # print (loc, len(self.saved_sim))
+        # print ('---------', loc, '-----------')
+        if loc < len(self.saved_sim):    
+            sim_state_file = WORK_PATH + '/' + self.save_sim_folder + '/' + self.saved_sim[loc]
+            return sim_state_file
+        else:
+            return None
     
     def reset(self, seed:  Optional[int] = None, **kwargs):
-        #if self.run != 0:
-        #    self.close()
+        # print ('----------------', self.run, '----------------------')
+        if self.run != 0:
+            self.close()
         #    self.save_csv(self.out_csv_name, self.run)
         self.run += 1
-        self.metrics = []
 
+        self.metrics = []
+        
+        
         if seed is not None:
             self.sumo_seed = seed
+        self.load_state_file()
         self._start_simulation()
-
-        self.vehicles = dict()
         
-        self.speed_limits_set = np.array([-1, 30, 25, 20])
-        self.detectors = traci.inductionloop.getIDList()
-        #print (self.detectors)
-        self.observations = np.zeros(len(self.detectors))
-        self.vsl_controller = VSLController(*self.vsl_files)
-        self.num_vsl = len(self.vsl_controller.controlzones)
-        self.observation_space = Box(low=0, high=1, shape=(len(self.detectors), ) )
-        self.action_space = Discrete(len(self.speed_limits_set)**self.num_vsl)
+        ''' metrics related attributes '''
+        self.metrics = { 'occupancy': [ deque([], int(self.delta_step*self.obs_horizon)) for dq in range(self.numE2)],
+                        'speed': [ deque([], int(self.delta_step*self.obs_horizon)) for dq in range(self.numE2)],
+                    'halting': [ deque([], int(self.delta_step*self.rwd_horizon)) for dq in range(self.numE2)],
+                    'flow': deque([], int(self.delta_step*self.rwd_horizon)),
+                   }
+        
         return self.observations
 
     @property
@@ -186,84 +282,85 @@ class TurnpikeEnvironment(gym.Env):
         return self.sumo.simulation.getTime()
     
     def step(self, action):
-        metrics = { 'occupancy': np.zeros(shape=(self.delta_step, len(self.detectors))),
-                    'time to collision': np.zeros(shape=(self.delta_step)),
-                    'flow': np.zeros(shape=(self.delta_step))
-                   }
+        observations = None
         
-        for i in range(self.delta_step):
-            if i == 0:
-                self._apply_actions(action)
-                self._sumo_step(metrics, i)
-            else:
-                self._sumo_step(metrics, i) 
-        
-        observations = self._compute_observations(metrics)
-        rewards = self._compute_rewards(metrics)
+        if len(self.metrics['occupancy'][0]) < self.metrics['occupancy'][0].maxlen:
+            for st_ in range( int(self.delta_step*(self.rwd_horizon + self.obs_horizon))):
+                if st_ == self.delta_step * self.obs_horizon - 1:
+                    observations = self._compute_observations()
+                    self._apply_actions(action)
+                    self._sumo_step(st_)
+                else:
+                    self._sumo_step(st_)
+                
+        else:
+            for st_ in range( int(self.delta_step*self.rwd_horizon)):
+                if st_ == 0:
+                    observations = self._compute_observations()
+                    self._apply_actions(action)
+                    self._sumo_step(st_)
+                else:
+                    self._sumo_step(st_)
+        rewards = self._compute_rewards()
         done = self._compute_dones()
-        info = self._compute_info(metrics)
-        # self.check_vehicle_maxspeed()
-
+        info = self._compute_info()
+        print ( 'Sim time:', self.sim_time, ' Action:', action, ' current_mode: ', self._mode, ' Current Reward: ', rewards )
         return observations, rewards, done, info 
 
-    def _sumo_step(self, metrics, i):
+    def _sumo_step(self, i):
         self.sumo.simulationStep()
         self.vsl_controller._search_and_apply()
-        for m, loopID in enumerate(traci.inductionloop.getIDList()):
-            metrics['occupancy'][i][m] = traci.inductionloop.getLastStepOccupancy(loopID)
-        # metrics['time to collision'][i] = getAverageTTC()
-        metrics['time to collision'][i] = 0
-        metrics['flow'][i] = getAverageDetectorFlow()
+        self._get_metrics() 
     
-    def _apply_actions(self, action):
+    def _apply_actions(self, actions):
         basenum = len(self.speed_limits_set)
 
-        actions = np.base_repr(action, base=basenum)
+        actions = np.base_repr(actions, base=basenum)
         #print(actions, 'before')
-        padding_length = self.num_vsl - len(actions) if actions != '0' else self.num_vsl
-        actions = np.base_repr(action, base=basenum, padding=padding_length)
+        padding_length = self.num_vsl - \
+            len(actions) if actions != '0' else self.num_vsl
+        actions = np.base_repr(int(actions), base=basenum, padding=padding_length)
         #print(actions[0])
         #print(actions, 'after')
-        speed_limit_decisions = np.zeros(self.num_vsl)
-        for i in range(self.num_vsl):
-            speed_limit_decisions[i] = self.speed_limits_set[int(actions[i])] 
+
+        speed_limit_decisions = self.speed_limits_set[int(actions[0])]
+
+        # print ('---------------------------##', speed_limit_decisions)
+        
         self.vsl_controller._update_speed_limit(speed_limit_decisions)
-        # print ('Speed limit updated!')
     
-    def _compute_observations(self, metrics):
-        #print(metrics['occupancy'].shape)
-        return np.average(metrics['occupancy'], axis=0)/100
-
-    def _compute_rewards(self, metrics):
+    def _compute_observations(self):
+        num_d = len(self.metrics['occupancy'])
+        obs = np.zeros(shape=(num_d*2, self.obs_horizon))
+        for _m in range(num_d):
+            for _n in range(self.obs_horizon):
+                occupancies = np.array(self.metrics['occupancy'])
+                speeds = np.array(self.metrics['speed'])
+                mean_flow = np.mean(occupancies[_m][_n*self.delta_step: (_n+1)*self.delta_step ])
+                mean_speed = np.mean(speeds[_m][_n*self.delta_step: (_n+1)*self.delta_step])
+                obs[_m][_n] = min(mean_flow/100, 1)
+                obs[num_d+_m][_n] = min(mean_speed/50, 1)
+        return obs.flatten()
+ 
+    def _compute_rewards(self):
+        coef_ = np.array([0.25, 0.25, 0.40, 0.10])
         if self._mode == 0:
-            r = np.average(metrics['flow'])
-        else:
-            r = np.average(metrics['time to collision'])
-        return r
-
-    #@property
-    #def observation_space(self):
-    #    return self.vsl_controller.controlzones
+            meanspeeds = np.average(np.array(self.metrics['speed']), axis=1) 
+            r = max(min( np.sum((meanspeeds-40)*coef_/40), 0), -1)
+        elif self._mode == 1:
+            # brakerates = np.array(self.metrics['brake_rate']) / traci.vehicle.getIDCount()
+            meannumhalt = np.average(np.array(self.metrics['halting']), axis=1) 
+            r =  - min(np.sum(meannumhalt/(self.delta_time)*3600/2400* coef_), 1)
+        return r 
     
-    #@property
-    #def action_space(self):
-    #    return self.vsl_controller._update_speed_limit
-
-    
-
     def _compute_dones(self):
         dones = False
         if self.sim_time > self.sim_max_time:
             dones = True
         return dones
 
-    def _compute_info(self, metrics):
-        info = self._compute_step_info(metrics)
-        self.metrics.append(info)
-        return info
-
-    def _compute_step_info(self, metrics):
-        return metrics
+    def _compute_info(self):
+        return self.metrics
     
     def close(self):
         if self.sumo is None:

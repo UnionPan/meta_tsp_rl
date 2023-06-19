@@ -7,7 +7,7 @@ env-name: "Turnpike-v0"
 env-kwargs:
   delta_time: 60
   step_length: 0.5
-
+  use_gui: 0
 # Discount factor gamma.
 gamma: 0.99
 
@@ -28,7 +28,7 @@ nonlinearity: "tanh"
 # Task-specific
 # -------------
 # Number of trajectories to sample for each task.
-fast-batch-size: 10
+fast-batch-size: 20
 
 # Number of gradient steps in the inner loop / fast adaptation.
 num-steps: 1
@@ -39,10 +39,10 @@ fast-lr: 0.1
 # Optimization
 # ------------
 # Number of outer-loop updates (ie. number of batches of tasks).
-num-batches: 500
+num-batches: 100
 
 # Number of tasks in each batch of tasks.
-meta-batch-size: 2
+meta-batch-size: 5
 
 # TRPO-specific
 # -------------
